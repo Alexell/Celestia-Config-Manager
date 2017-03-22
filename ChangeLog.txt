@@ -1,0 +1,212 @@
+Celestia Config Manager v1.1.4 (13.05.2014)
+------------------------------------------
+- Implemented check for updates with the launch of the update module
+- Updated language files
+==============================
+
+Celestia Config Manager v1.1.3 (08.05.2014)
+------------------------------------------
+"Objects and time" tab:
+	- In the handler "Select all" from spacecraft, disabled the choice of problem spacecrafts
+
+"Manage settings" tab:
+	- Fixed bug of restoration of Lua Universal Tools settings
+	- Updated the restoration of the original settings for Celestia EP v3.0
+==============================
+
+Celestia Config Manager v1.1.2 (28.04.2014)
+------------------------------------------
+Settings management tab:
+	- Updated the restoration of the original settings for Celestia EP v3.0
+==============================
+
+Celestia Config Manager v1.1.1 (22.04.2014)
+------------------------------------------
+"Objects and time" tab:
+	- Blocked the display control of 4 spacecraft, because they have a special design TimeLine
+
+"Lua Tools" tab:
+	- Fixed checking the parameter show_lua_universal_tools_v2 for LUT v2.0.
+	- Improved support for other parameters Lua Universal Tools v2.0 for Celestia EP v3.0.
+==============================
+
+Celestia Config Manager v1.1.0 (15.04.2014)
+------------------------------------------
+"Objects and time" tab:
+	- Added a check-box for on/off the illumination of particles of Saturn's rings (only for Celestia EP v3.0)
+
+"Lua Tools" tab:
+	- Added support for Lua Universal Tools v2.0 (modified for Celestia EP v3.0)
+
+Other changes:
+	- Implemented application localization
+	- Added help for the program
+	- Added support for Celestia EP v3.0
+==============================
+
+Celestia Config Manager v1.0.1 (27.01.2014)
+------------------------------------------
+"Objects and time" tab:
+	- Fixed some checkboxes in Celestia EP v1.0
+	- Fixed a bold line that appears in those who use the classic Windows theme
+
+"Lua Tools" tab:
+	- Added the ability to turn on/off the display of the Asteroid Belt at the start of Celestia
+	- Fixed the work of check-box on/off panel when starting Celestia
+
+Other changes:
+	- Fixed displaying of version Celestia EP v2.0
+	- Completely rewritten restoration of initial settings (function code was reduced by 302 lines)
+==============================
+
+Celestia Config Manager v1.0 (24.01.2014)
+------------------------------------------
+
+"Main" tab:
+	- The ability to change folder names for add-ons by default is blocked
+	- Added the ability to set/change the folder to save screenshots from. CELX scripts
+	- Added the ability to select a policy for potentially dangerous actions. CELX scripts
+	- Added the ability to change the start script
+	- Added the ability to change the demo script
+	- Added the ability to change the rotation speed of the observer's camera by pressing the <- or -> arrow on the keyboard
+	- Added scrolling bar for this function
+	- Added the ability to change the sensitivity of the mouse in Celestia
+	- Added scroll bar for this function
+	- Added ability to turn on/off music for Celestia EP v2.0
+	- Added the ability to select a player for this function
+
+"Objects and time" tab:
+	- Added the ability to turn on/off the display of the Kuiper Belt
+	- Added a link to download the Kuiper Belt, in case of its absence
+	- Added the ability to turn on/off the dynamic model of the atmosphere of Jupiter
+	- Added a link to download the dynamic model of the atmosphere of Jupiter, in the absence of it
+	- Added possibility of on/off display of 3D volcanoes Io
+	- Added the ability to turn on/off the display of the space elevator
+	- Added a link to download the space elevator, in the absence of it
+	- Added ability to turn on/off the Oort cloud display
+	- Added a link to download the Oort cloud, in case of its absence
+	- Added the ability to turn on/off the display of optical effects of Saturn
+	- Added the ability to turn on/off the display of spacecraft in real time
+	- Supports all spacecrafts present in Celestia EP v2.0
+	- Implemented the ability to select all devices with a single click
+	- Added check of the availability of appropriate spacecraft
+
+"Lua Tools" tab:
+	- The name of the tab now depends on the version of the Lua tools
+	- Added support for Lua Universal Tools v1.0 and v2.0
+	- Due to the specificity of Lua Universal Tools v2.0, many parameters are not available for it
+	- Added the ability to enable/disable the "Zoom"
+	- Added the ability to turn on/off the chart
+	- Added the ability to enable/disable the display of the joystick (mode "Navigation")
+	- Added the ability to select a color scheme for Lua Universal Tools
+	- Added the ability to on/off local time display
+	- Added the ability to turn the compass on and off in the center
+	- Added the ability to turn Alt-Azimuth on/off
+	- Added the ability to change the date format
+	- Added the ability to change the speed of the flight to the object
+	- The possibility to change the cockpit is removed, since a new convenient tool for working with the cockpit
+	- Changed the link that appears in the absence of Lua-tools, now it leads to the section of the site where you can select and download Lua-tools
+
+The "Restore Settings" tab has been renamed to "Manage Settings":
+	- Added export of settings to file
+	- Added import settings from file
+
+"About" tab:
+	- Changed description of the program
+	- Added a block of links to the recommended files of our site
+	- An error occurred when there is no internet connection
+
+Other changes:
+	- Updated the method of restoring the default settings
+	- Method for reading Celestia settings was updated when the utility was started
+	- Updated method of saving Lua-tool settings
+	- Updated method for controlling spacecraft mapping in real time
+	- Simplified implementation support for Celestia ED and Celestia EP assemblies
+	- The principle of protection from non-limiting values ??in the fields of the "Basic" tab has been changed.
+	- Removed using DLL file
+	- Fixed error of the "Browse folders" window, now when it is called, it appears in the center
+	- Optimized memory consumption
+	- Updated the algorithm for reading the Celestia version (now shows the version of the standard builds)
+	- Added a link to download the new version of Celestia, if the user has a version below 1.6.1
+==============================
+
+Celestia Config Manager v0.5.0 (20.10.2013)
+------------------------------------------
+This version is distributed only in Celestia EP v2.0,
+Because there was a loss of 30% of the source code and the functionality will need to write a new one (this will already be the v1.0 version of the Manager).
+==============================
+
+Celestia Config Manager v0.2.1 (09.10.2012)
+------------------------------------------
+
+- Added links to download the collection of Mars attractions and a compilation of cockpit for Celestia (visible only if the user does not have relevant collections)
+- Now, in the absence of a cockpit collector, the list of cabins remains accessible, and only the "Standard"
+- Added check of the existence of a compilation of cockpits when restoring the original settings Celestia (sometimes an error occurred)
+==============================
+
+Celestia Config Manager v0.2.0 (17.08.2012)
+-------------------------------------------
+
+- Fixed bug of restoration of initial settings (in the absence of Lua Edu Tools there was an error message)
+- Made support for Celestia 1.6.1 Educational
+- All images used in the program are now downloaded from the file Celestia_Config_Manager_Lib.dll
+- Added check for the existence of the file Celestia_Config_Manager_Lib.dll, without it the utility will not start
+- Added a link to download Lua Edu Tools, if it is not installed by the user
+- Added the ability to enable and disable the package "Sights of Mars" (release from Leserg: http://www.celestiaproject.ru/?p=1683)
+- Added the possibility to select the cockpit (cockpit) of the ship from the package "Cockpits_pack_ru.zip" (release from Alexell: http://www.celestiaproject.ru/?p=1730)
+- Optimized program icon (reduced the size by ~ 200kb)
+- Other minor improvements in the code of the program.
+==============================
+
+Celestia Config Manager v0.1.0 Stable (23.06.2012)
+--------------------------------------------------
+
+- Manual entry into the fields of the add-ons folders is blocked.
+- Cursor images are changed.
+- Now the cursor can be selected not only by pressing the switch, but also by clicking on the cursor image.
+- Fixed the function of restoring the original settings for Galileo.
+- Added a link to the discussion.
+==============================
+
+Celestia Config Manager v0.1.0 RC (22.06.2012)
+----------------------------------------------
+
+- Fixed a bug with enabling/disabling Galileo display in the present tense.
+- Added the ability to restore the original Celestia settings.
+- Implemented the location of the utility: if it is in a folder with Celestia, it will start and will work. And if not, then when you try to launch a pop-up window with a message, and the utility will not start.
+- The ability to display spacecraft that have ceased to exist now works for each ship separately.
+- Added the ability to change the cursor, which is used in Celestia.
+- Implemented the function of specifying folders with additions for Celestia.
+- To protect the user from rash/accidental actions, a window with the question "Do you really want to restore the original settings?" Is added to the recovery function.
+- After an error appears about an incorrect value in any field, it is highlighted in red. Now the red color changes to normal immediately, when you start to change the value (I think it will be more convenient).
+- The code of the program is slightly optimized, as well as the images used in it (reduced the size of the program ~ by 340 KB).
+- Added thanks.
+=====================================
+
+Celestia Config Manager v0.1.0 beta 3 (18.06.2012)
+--------------------------------------------------
+
+- Changed the principle of protection from entering letters and out-of-bound values in the fields of the "Basic" tab.
+- Changed the methods of text output on the form.
+- Some headers have been changed.
+- Added recommended values next to the fields.
+- Check-boxes (checkboxes) are now to the left of the inscriptions.
+- The application icon has been changed.
+- This version has not yet fixed the bug with Galileo.
+=================================
+
+Celestia Config Manager v0.1.0 beta 2 (16.06.2012)
+--------------------------------------------------
+
+- Fixed the problem of running the program on different computers (the necessary libraries are now stitched into the program itself).
+- Added protection from entering letters and beyond values in the fields of the "Basic" tab.
+- The function of displaying spacecraft that has ceased to exist only works for Mir and Galileo stations (since in the official version only for viewing them one needs to rewind the time back).
+=====================================
+
+Celestia Config Manager v0.1.0 beta 1 (15.06.2012)
+--------------------------------------------------
+
+- Realized the functions of changing the number of points of the orbit and segments of the rings.
+- Implemented some settings Lua Edu Tools.
+- Implemented switching on and off solar flares and Jupiter rings (if these additions are installed).
+=====================================
