@@ -24,19 +24,19 @@ String LinkLocale[15];
 String StringsLocale[15];
 String MessegesLocale[15];
 
-String CurNum="0"; //Увеличивать при каждом обновлении
+String CurNum="0"; //РЈРІРµР»РёС‡РёРІР°С‚СЊ РїСЂРё РєР°Р¶РґРѕРј РѕР±РЅРѕРІР»РµРЅРёРё
 
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-//                          ПРОВЕРКИ ПРИ СТАРТЕ                               //
+//                          РџР РћР’Р•Р РљР РџР Р РЎРўРђР РўР•                               //
 ////////////////////////////////////////////////////////////////////////////////
 
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TForm(Owner)
 {
-	//ЗАГРУЗКА ЛОКАЛИЗАЦИИ
+	//Р—РђР“Р РЈР—РљРђ Р›РћРљРђР›РР—РђР¦РР
 	wchar_t charlang[255];
 	LCID lc = GetSystemDefaultLCID();
 	GetLocaleInfo(lc,LOCALE_SENGLANGUAGE,charlang,sizeof(charlang));
@@ -47,7 +47,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Application->Title=Lang->ReadString("Strings","AppName","Celestia Config Manager")+" v"+GetVer(Application->ExeName);
 	MainForm->Caption=Application->Title;
 
-	//Вкладка "Основные"
+	//Р’РєР»Р°РґРєР° "РћСЃРЅРѕРІРЅС‹Рµ"
 	Label19->Caption=Lang->ReadString("Main","Label19","You are using:")+" ";
 	Label32->Caption=Lang->ReadString("Main","Label32","Download new version");
 	LinkLocale[1]=Lang->ReadString("Links","Link1","http://sourceforge.net/projects/celestia/files/Celestia-win32-bin/");
@@ -86,7 +86,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Hlp->Caption=Lang->ReadString("Main","Help","Help");
 	BitBtn1->Caption=Lang->ReadString("Strings","SaveButton","Save");
 
-	//Вкладка "Объекты и время"
+	//Р’РєР»Р°РґРєР° "РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ"
 	ObjectTab->Caption=Lang->ReadString("ObjectsTime","ObjectTab","Objects and time");
 	GroupBox2->Caption=Lang->ReadString("ObjectsTime","GroupBox2","Show");
 	CheckBox1->Caption=Lang->ReadString("ObjectsTime","CheckBox1","Sun flares");
@@ -109,7 +109,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Label16->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox62->Caption=Lang->ReadString("ObjectsTime","CheckBox62","Highlight the particles of Saturn rings (only Celestia EP v3.0)");
 
-	//Космические аппараты
+	//РљРѕСЃРјРёС‡РµСЃРєРёРµ Р°РїРїР°СЂР°С‚С‹
 	GroupBox5->Caption=Lang->ReadString("ObjectsTime","GroupBox5","Spacecrafts, which doesn't exists anymore");
 	Page1->Caption=Lang->ReadString("ObjectsTime","Page1","Page 1");
 	Page2->Caption=Lang->ReadString("ObjectsTime","Page2","Page 2");
@@ -156,7 +156,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CheckBox22->Caption=Lang->ReadString("Spacecrafts","CheckBox22","Select all");
 	BitBtn2->Caption=Lang->ReadString("Strings","SaveButton","Save");
 
-	//Вкладка "Lua-инструменты"
+	//Р’РєР»Р°РґРєР° "Lua-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹"
 	CheckBox4->Caption=Lang->ReadString("LuaTools","CheckBox4","Show at Celestia startup");
 	GroupBox3->Caption=Lang->ReadString("LuaTools","GroupBox3","Show automatically");
 	CheckBox5->Caption=Lang->ReadString("LuaTools","CheckBox5","Information about objects");
@@ -189,7 +189,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	LinkLocale[7]=Lang->ReadString("Links","Link7","http://en.celestiaproject.ru/?cat=29");
 	BitBtn3->Caption=Lang->ReadString("Strings","SaveButton","Save");
 
-	//Вкладка "Управление настройками"
+	//Р’РєР»Р°РґРєР° "РЈРїСЂР°РІР»РµРЅРёРµ РЅР°СЃС‚СЂРѕР№РєР°РјРё"
 	SettingTab->Caption=Lang->ReadString("ManageSettings","SettingsTab","Manage settings");
 	GroupBox9->Caption=Lang->ReadString("ManageSettings","GroupBox9","Import settings");
 	Label17->Caption=Lang->ReadString("ManageSettings","Label17","It is possible to import a file with settings, which was exported earlier. You'll get the exact configuration, which was exported.");
@@ -201,17 +201,17 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Label9->Caption=Lang->ReadString("ManageSettings","Label9","When restoring an original settings, default values are applied to all Celestia parameters, Lua-tools and addons.");
 	BitBtn4->Caption=Lang->ReadString("ManageSettings","BitBtn4","Perform recovery");
 
-	//Вкладка "О программе"
+	//Р’РєР»Р°РґРєР° "Рћ РїСЂРѕРіСЂР°РјРјРµ"
 	AboutTab->Caption=Lang->ReadString("About","AboutTab","About");
 	Label7->Caption=Lang->ReadString("About","Label7","Configuration manager was developed for Celestia 1.6.1, Celestia Educational and Celestia Extended Pack. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9, Lua Universal Tools v1.0 and Lua Universal Tools v2.0.");
 	Label3->Caption=Lang->ReadString("About","Label3","Thanks to: Sergey Leonov a.k.a Leserg for testing of the first version and useful tips; Artyom Volgin a.k.a Zemlyanin for ideas on functionality and testing of all versions.");
 	LabelCelestia->Caption=Lang->ReadString("About","LabelCelestia","Celestia in Russia")+":";
 	Label4->Caption=Lang->ReadString("About","Label4","Discussion")+":";
 	Label10->Caption=Lang->ReadString("About","Label10","on shatters.net/forum");
-	LinkLocale[8]=Lang->ReadString("Links","Link8","#"); //ссылка на тему англоязычного форума (форум недоступен)
+	LinkLocale[8]=Lang->ReadString("Links","Link8","#"); //СЃСЃС‹Р»РєР° РЅР° С‚РµРјСѓ Р°РЅРіР»РѕСЏР·С‹С‡РЅРѕРіРѕ С„РѕСЂСѓРјР° (С„РѕСЂСѓРј РЅРµРґРѕСЃС‚СѓРїРµРЅ)
 	GroupBox12->Caption=Lang->ReadString("About","GroupBox12","Recommended downloads")+":";
 
-	//Оставшиеся строки
+	//РћСЃС‚Р°РІС€РёРµСЃСЏ СЃС‚СЂРѕРєРё
 	StringsLocale[1]=Lang->ReadString("Strings","Unknown","unknown");
 	StringsLocale[2]=" "+Lang->ReadString("Strings","Outdated","(outdated)");
 	StringsLocale[3]=Lang->ReadString("Strings","Version","Version");
@@ -224,7 +224,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	StringsLocale[10]=Lang->ReadString("Strings","AltAzimuthOff","Alt-azimuth mode disabled");
 	StringsLocale[11]=Lang->ReadString("Strings","NoLocalizedHelp","Help file in your language not found. Open Help in English?");
 
-	//Сообщения
+	//РЎРѕРѕР±С‰РµРЅРёСЏ
 	MessegesLocale[1]=Lang->ReadString("Messages","Message1","To run the utility, place it in the root directory of Celestia.");
 	MessegesLocale[2]=Lang->ReadString("Messages","Message2","Invalid value!");
 	MessegesLocale[3]=Lang->ReadString("Messages","Message3","Invalid addons folder! The first field must be specified.");
@@ -237,11 +237,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	MessegesLocale[10]=Lang->ReadString("Messages","Message10","Settings were successfully exported to a file");
 	MessegesLocale[11]=Lang->ReadString("Messages","Message11","Available Update Celestia Config Manager. Upgrade?");
 
-	//ПРОВЕРКА ОБНОВЛЕНИЙ ПРОГРАММЫ
+	//РџР РћР’Р•Р РљРђ РћР‘РќРћР’Р›Р•РќРР™ РџР РћР“Р РђРњРњР«
 	String NetNum;
 	try
 	{
-		//Получаем номер обновлений и сравниваем
+		//РџРѕР»СѓС‡Р°РµРј РЅРѕРјРµСЂ РѕР±РЅРѕРІР»РµРЅРёР№ Рё СЃСЂР°РІРЅРёРІР°РµРј
 		NetNum=Web->Get("http://files.celestiaproject.ru/config_manager/update/update.ini");
 		if (StrToInt(NetNum)>StrToInt(CurNum))
 		{
@@ -254,7 +254,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	}
 	catch(...){}
 
-	//ПРОВЕРКА РАСПОЛОЖЕНИЯ ПРОГРАММЫ
+	//РџР РћР’Р•Р РљРђ Р РђРЎРџРћР›РћР–Р•РќРРЇ РџР РћР“Р РђРњРњР«
 	if (FileExists(ExtractFilePath(Application->ExeName)+"celestia.cfg") && FileExists(ExtractFilePath(Application->ExeName)+"celestia.exe") || FileExists(ExtractFilePath(Application->ExeName)+"celestia161-ED.exe")  || FileExists(ExtractFilePath(Application->ExeName)+"Celestia EP.exe"))
 	{
 		startfolder = true;
@@ -272,7 +272,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-//Функция получения версии exe файла
+//Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РІРµСЂСЃРёРё exe С„Р°Р№Р»Р°
 String __fastcall TMainForm::GetVer(String FileName)
 {
     String Version;
@@ -308,37 +308,37 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		Application->Terminate();
 	else
 	{
-		//Включаем видимость формы
+		//Р’РєР»СЋС‡Р°РµРј РІРёРґРёРјРѕСЃС‚СЊ С„РѕСЂРјС‹
 		MainForm->AlphaBlend=false;
 
-		//Считывание версии Celestia
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ РІРµСЂСЃРёРё Celestia
 		if (FileExists(ExtractFilePath(Application->ExeName)+"celestia161-ED.exe"))
 			CelestiaVersion="Celestia 1.6.1 Educational";
 		else
 		{
-			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"Информация о Celestia EP v3.0.pdf"))
+			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Celestia EP v3.0.pdf"))
 			{
 				CelestiaVersion="Celestia Extended Pack v3.0";
 				CheckBox62->Enabled=true;
 			}
 
-			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"Информация о Celestia EP v2.0.pdf"))
+			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Celestia EP v2.0.pdf"))
 			{
 				CelestiaVersion="Celestia Extended Pack v2.0";
 				GroupBox6->Visible=true;
 			}
 
-			if (FileExists(ExtractFilePath(Application->ExeName)+"Информация о Celestia EP v1.1.txt"))
+			if (FileExists(ExtractFilePath(Application->ExeName)+"РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Celestia EP v1.1.txt"))
 				CelestiaVersion="Celestia Extended Pack v1.1";
 
-			if (FileExists(ExtractFilePath(Application->ExeName)+"Информация о Celestia EP.txt"))
+			if (FileExists(ExtractFilePath(Application->ExeName)+"РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Celestia EP.txt"))
 				CelestiaVersion="Celestia Extended Pack v1.0";
 		}
 		if (CelestiaVersion!="")
 			Label19->Caption=Label19->Caption+CelestiaVersion;
 		else
 		{
-			//Проверка версии Celestia
+			//РџСЂРѕРІРµСЂРєР° РІРµСЂСЃРёРё Celestia
 			Label19->Caption=Label19->Caption+"Celestia "+GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe");
 			if(GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe")!="1.6.1")
 			{
@@ -347,11 +347,11 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			}
 		}
 
-		//Авторская защита
-		LabelAbout->Caption="© Alexell\n"+StringsLocale[3]+": "+GetVer(Application->ExeName)+" (13.05.2014)";
+		//РђРІС‚РѕСЂСЃРєР°СЏ Р·Р°С‰РёС‚Р°
+		LabelAbout->Caption="В© Alexell\n"+StringsLocale[3]+": "+GetVer(Application->ExeName)+" (13.05.2014)";
 		LabelLink2->Caption="www.celestiaproject.ru";
 
-		//Блок ссылок "Рекомендуем скачать"
+		//Р‘Р»РѕРє СЃСЃС‹Р»РѕРє "Р РµРєРѕРјРµРЅРґСѓРµРј СЃРєР°С‡Р°С‚СЊ"
 		TStringList *TMP = new TStringList;
 		try
 		{
@@ -376,7 +376,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		Link[4]=Links->ReadString("Link4","URL",StringsLocale[4]);
 		delete Links;
 
-		//ПРОВЕРКА ВКЛАДКИ "ОСНОВНЫЕ"
+		//РџР РћР’Р•Р РљРђ Р’РљР›РђР”РљР "РћРЎРќРћР’РќР«Р•"
 		TStringList *MainProv=new TStringList;
 		TStringList *DirList=new TStringList;
 		String OrbitP="OrbitPathSamplePoints  ";
@@ -387,7 +387,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		String RingDigit="";
 		MainProv->LoadFromFile(ExtractFilePath(Application->ExeName) + "celestia.cfg");
 
-		//Считывание папок с дополнениями
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ РїР°РїРѕРє СЃ РґРѕРїРѕР»РЅРµРЅРёСЏРјРё
 		S[3]=ExtractFilePath(Application->ExeName);
 		DirList->LoadFromFile(S[3]+"celestia.cfg");
 		for (int i=0;i<DirList->Count;i++)
@@ -408,7 +408,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			EditDir3->Text = S[2];
 		}
 
-		//Считывание точек орбит
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ С‚РѕС‡РµРє РѕСЂР±РёС‚
 		for (int i=0;i<MainProv->Count;i++)
 			if ((op=MainProv->Strings[i].Pos(OrbitP))>0)
 				for (int k=op;k<=MainProv->Strings[i].Length();k++)
@@ -416,7 +416,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 						OrbitDigit+=MainProv->Strings[i][k];
 		Edit2->Text=OrbitDigit;
 
-		//Считывание сегментов колец
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ СЃРµРіРјРµРЅС‚РѕРІ РєРѕР»РµС†
 		for (int i=0;i<MainProv->Count;i++)
 			if ((rp=MainProv->Strings[i].Pos(RingsP))>0)
 				for (int k=rp;k<=MainProv->Strings[i].Length();k++)
@@ -424,7 +424,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 						RingDigit+=MainProv->Strings[i][k];
 		Edit3->Text=RingDigit;
 
-		//Считывание курсора
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ РєСѓСЂСЃРѕСЂР°
 		for (int i=0;i<MainProv->Count;i++)
 		{
 			if(MainProv->Strings[i].Pos("  Cursor           \""))
@@ -450,7 +450,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			}
 		}
 
-		//Проверка папки скриншотов
+		//РџСЂРѕРІРµСЂРєР° РїР°РїРєРё СЃРєСЂРёРЅС€РѕС‚РѕРІ
 		S[3]=ExtractFilePath(Application->ExeName);
 		DirList->LoadFromFile(S[3]+"celestia.cfg");
 		for (int i=0;i<DirList->Count;i++)
@@ -478,7 +478,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			EditScreenDir->Text = S[4];
 		}
 
-		//Проверка параметра ScriptSystemAccessPolicy
+		//РџСЂРѕРІРµСЂРєР° РїР°СЂР°РјРµС‚СЂР° ScriptSystemAccessPolicy
 		for (int i=0;i<MainProv->Count;i++)
 		{
 			if(MainProv->Strings[i].Pos("  ScriptSystemAccessPolicy"))
@@ -492,7 +492,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			}
 		}
 
-		//Проверка стартового скрипта
+		//РџСЂРѕРІРµСЂРєР° СЃС‚Р°СЂС‚РѕРІРѕРіРѕ СЃРєСЂРёРїС‚Р°
 		S[3]=ExtractFilePath(Application->ExeName);
 		S[5]="";
 		DirList->LoadFromFile(S[3]+"celestia.cfg");
@@ -515,7 +515,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			EditStartScript->Text = S[5];
 		}
 
-		//Проверка Demo сценария
+		//РџСЂРѕРІРµСЂРєР° Demo СЃС†РµРЅР°СЂРёСЏ
 		S[3]=ExtractFilePath(Application->ExeName);
 		S[6]="";
 		DirList->LoadFromFile(S[3]+"celestia.cfg");
@@ -538,7 +538,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			EditDemoScript->Text = S[6];
 		}
 
-		//Считывание скорости вращения
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё РІСЂР°С‰РµРЅРёСЏ
 		String RotateP="  RotateAcceleration ";
 		String RotateDigit="";
 
@@ -552,7 +552,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		Edit5->Text=RotateDigit;
 		ScrollBar1->Position=StrToInt(Edit5->Text);
 
-		//Считывание чувствительности мыши
+		//РЎС‡РёС‚С‹РІР°РЅРёРµ С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚Рё РјС‹С€Рё
 		String MouseRotP="  MouseRotationSensitivity ";
 		String MouseDigit="";
 		float pos,postemp;
@@ -572,7 +572,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		ScrollBar2->Position=pos;
 		FormatSettings.DecimalSeparator=',';
 
-		//Проверка музыкального проигрывателя для Celestia EP v2.0
+		//РџСЂРѕРІРµСЂРєР° РјСѓР·С‹РєР°Р»СЊРЅРѕРіРѕ РїСЂРѕРёРіСЂС‹РІР°С‚РµР»СЏ РґР»СЏ Celestia EP v2.0
 		if(GroupBox6->Visible==true)
 		{
 			EP = new TIniFile(ExtractFilePath(Application->ExeName)+"celestia_ep.ini");
@@ -589,40 +589,40 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
 		//-------------------------
 
-		//ПРОВЕРКА ВКЛАДКИ "ОБЪЕКТЫ И ВРЕМЯ"
+		//РџР РћР’Р•Р РљРђ Р’РљР›РђР”РљР "РћР‘РЄР•РљРўР« Р Р’Р Р•РњРЇ"
 
-		//Проверка Солнечных вспышек
+		//РџСЂРѕРІРµСЂРєР° РЎРѕР»РЅРµС‡РЅС‹С… РІСЃРїС‹С€РµРє
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			ObjectProv("data\\solar-system\\sun\\","sun_flares","sun flares.ssc",CheckBox1);
 		else
 			ObjectProv("extras\\","sun_flares","sun flares.ssc",CheckBox1);
 
-		//Проверка колец Юпитера
+		//РџСЂРѕРІРµСЂРєР° РєРѕР»РµС† Р®РїРёС‚РµСЂР°
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
             ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
 		else
 			ObjectProv("extras\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
 
-		//Проверка Достопримечательностей Марса
+		//РџСЂРѕРІРµСЂРєР° Р”РѕСЃС‚РѕРїСЂРёРјРµС‡Р°С‚РµР»СЊРЅРѕСЃС‚РµР№ РњР°СЂСЃР°
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
             ObjectProv("data\\solar-system\\planets-&-moons\\mars\\","Mars Surface Features","Mars Features.ssc",CheckBox10);
 		else
 			ObjectProv("extras\\Solar System\\Planet\\Mars\\","Mars Surface Features","Mars Features.ssc",CheckBox10);
 
-		//Проверка Пояса Койпера
+		//РџСЂРѕРІРµСЂРєР° РџРѕСЏСЃР° РљРѕР№РїРµСЂР°
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			ObjectProv("data\\solar-system\\","kuiper-belt","Kuiper_Belt.ssc",CheckBox17);
 		else
             ObjectProv("extras\\","Kuiper_Belt","Kuiper_Belt.ssc",CheckBox17);
 
-		//Проверка Динамической атмосферы Юпитера
+		//РџСЂРѕРІРµСЂРєР° Р”РёРЅР°РјРёС‡РµСЃРєРѕР№ Р°С‚РјРѕСЃС„РµСЂС‹ Р®РїРёС‚РµСЂР°
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
         	ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","JupClouds","JupClouds.ssc",CheckBox18);
 		else
 			ObjectProv("extras\\","Jupiter_Clouds","JupClouds.ssc",CheckBox18);
 
-		//Проверка вулканов Ио
-		if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //недочет в самой сборке
+		//РџСЂРѕРІРµСЂРєР° РІСѓР»РєР°РЅРѕРІ РРѕ
+		if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //РЅРµРґРѕС‡РµС‚ РІ СЃР°РјРѕР№ СЃР±РѕСЂРєРµ
 			ObjectProv("extras\\","iovolcanoes\\iovolcanoes","volcanoes.ssc",CheckBox19);
 		else
 		{
@@ -632,22 +632,22 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				ObjectProv("extras\\","iovolcanoes","volcanoes.ssc",CheckBox19);
 		}
 
-		//Космический лифт
+		//РљРѕСЃРјРёС‡РµСЃРєРёР№ Р»РёС„С‚
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			ObjectProv("data\\fiction-objects\\","space-lift","Space Lift.ssc",CheckBox20);
 		else
 			ObjectProv("extras\\","Space Lift","Space Lift.ssc",CheckBox20);
 
-		//Облако Оорта
+		//РћР±Р»Р°РєРѕ РћРѕСЂС‚Р°
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			ObjectProv("data\\solar-system\\","oort-cloud","OC.dsc",CheckBox61);
 		else
 			ObjectProv("extras\\","Oort_Cloud","OC.dsc",CheckBox61);
 
-		//Подсветка частиц колец Сатурна
+		//РџРѕРґСЃРІРµС‚РєР° С‡Р°СЃС‚РёС† РєРѕР»РµС† РЎР°С‚СѓСЂРЅР°
 		HSatRingsProv("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
 
-		//Проверка Ending у космических аппаратов
+		//РџСЂРѕРІРµСЂРєР° Ending Сѓ РєРѕСЃРјРёС‡РµСЃРєРёС… Р°РїРїР°СЂР°С‚РѕРІ
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			EndingProv("data\\spacecrafts\\near-earth-missions\\", "mir", "mir.ssc", CheckBox9);
 		else
@@ -698,15 +698,15 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		else
 			EndingProv("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
 
-		//EndingProv("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); нет информации об Ending'е
-		//EndingProv("extras\\", "Corot", "Corot.ssc", CheckBox31); нет информации об Ending'е
+		//EndingProv("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+		//EndingProv("extras\\", "Corot", "Corot.ssc", CheckBox31); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 //		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 //			EndingProv("data\\spacecrafts\\space-observatories\\", "herschel", "herschel.ssc", CheckBox32);
 //		else
 //			EndingProv("extras\\", "herschel", "herschel.ssc", CheckBox32);
 
-		//EndingProv("extras\\", "Voyager", "voyager.ssc", CheckBox33);  нет информации об Ending'е
+		//EndingProv("extras\\", "Voyager", "voyager.ssc", CheckBox33);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			EndingProv("data\\spacecrafts\\kuiper-belt-missions\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
@@ -728,7 +728,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		else
 			EndingProv("extras\\", "envisat", "envisat.ssc", CheckBox37);
 
-		//EndingProv("extras\\", "ao7", "AO7.ssc", CheckBox38);   нет информации об Ending'е
+		//EndingProv("extras\\", "ao7", "AO7.ssc", CheckBox38);   РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 //		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 //			EndingProv("data\\spacecrafts\\moon-missions\\", "apollo10", "apollo10.ssc", CheckBox39);
@@ -765,7 +765,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		else
 			EndingProv("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
 
-		//EndingProv("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  нет информации об Ending'е
+		//EndingProv("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 //		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 //			EndingProv("data\\spacecrafts\\moon-missions\\", "lro", "lro.ssc", CheckBox46);
@@ -782,16 +782,16 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		else
 			EndingProv("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
 
-		//EndingProv("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  нет информации об Ending'е
-		//EndingProv("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  нет информации об Ending'е
-		//EndingProv("extras\\", "messenger", "messenger.ssc", CheckBox51);  нет информации об Ending'е
+		//EndingProv("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+		//EndingProv("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+		//EndingProv("extras\\", "messenger", "messenger.ssc", CheckBox51);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			EndingProv("data\\spacecrafts\\mars-missions\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 		else
 			EndingProv("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 
-		//EndingProv("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); нет информации об Ending'е
+		//EndingProv("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 			EndingProv("data\\spacecrafts\\interplanetary-missions\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
@@ -833,7 +833,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		else
 			EndingProv("extras\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
 
-		//ПРОВЕРКА LUA-ИНСТРУМЕНТОВ
+		//РџР РћР’Р•Р РљРђ LUA-РРќРЎРўР РЈРњР•РќРўРћР’
 		String ShowP="";
 		String ShowInf="enable_info = ";
 		String ShowCoord="enable_coordinates = ";
@@ -850,7 +850,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		String CustomDuration="custom_goto_duration = ";
 		String DigitDur="";
 
-		//Проверка версии Lua-инструментов
+		//РџСЂРѕРІРµСЂРєР° РІРµСЂСЃРёРё Lua-РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		{
 			LuaAdr="\lua-applications\\lua_universal_tools_v2\\";
@@ -918,7 +918,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			{
 				LuaAdr="none";
 				LuaTab->Caption=StringsLocale[6];
-				//Перечисляем все компоненты страницы для деактивации
+				//РџРµСЂРµС‡РёСЃР»СЏРµРј РІСЃРµ РєРѕРјРїРѕРЅРµРЅС‚С‹ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РґРµР°РєС‚РёРІР°С†РёРё
 				CheckBox4->Enabled=false;
 				CheckBox5->Enabled=false;
 				CheckBox6->Enabled=false;
@@ -942,7 +942,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		TStringList *Lua=new TStringList;
 		Lua->LoadFromFile(ExtractFilePath(Application->ExeName)+LuaAdr+"config.lua");
 
-		//Отображение панели
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїР°РЅРµР»Рё
 		for (int i=0;i<Lua->Count;i++)
 		{
 
@@ -954,7 +954,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox4->Checked=false;
 		}
 
-		//Отображение информации
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(ShowInf))
@@ -965,7 +965,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox5->Checked=false;
 		}
 
-		//Отображение координат
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(ShowCoord))
@@ -976,7 +976,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox6->Checked=false;
 		}
 
-		//Режим "Увеличение"
+		//Р РµР¶РёРј "РЈРІРµР»РёС‡РµРЅРёРµ"
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(Zoom))
@@ -987,7 +987,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox11->Checked=false;
 		}
 
-		//Диаграмма Г-Р
+		//Р”РёР°РіСЂР°РјРјР° Р“-Р 
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(HR))
@@ -998,7 +998,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox12->Checked=false;
 		}
 
-		//Отображение Кеплеровых параметров
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РљРµРїР»РµСЂРѕРІС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(ShowKep))
@@ -1009,7 +1009,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox7->Checked=false;
 		}
 
-		//Джойстик
+		//Р”Р¶РѕР№СЃС‚РёРє
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(Navi))
@@ -1020,7 +1020,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox13->Checked=false;
 		}
 
-		//Отображение компаса
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РєРѕРјРїР°СЃР°
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(ShowComp))
@@ -1031,7 +1031,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox8->Checked=false;
 		}
 
-		//Пояс астероидов
+		//РџРѕСЏСЃ Р°СЃС‚РµСЂРѕРёРґРѕРІ
 		TStringList *Addon = new TStringList;
 		Addon->LoadFromFile(ExtractFilePath(Application->ExeName)+LuaAdr+"\\adds\\Asteroid_Belt\\"+"Asteroid_Belt.ssc");
 		if(Addon->Text.Pos("Visible true"))
@@ -1041,7 +1041,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
 		delete Addon;
 
-		//Показывать местное время
+		//РџРѕРєР°Р·С‹РІР°С‚СЊ РјРµСЃС‚РЅРѕРµ РІСЂРµРјСЏ
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(LocalTime))
@@ -1052,7 +1052,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox14->Checked=false;
 		}
 
-		//Компас по центру
+		//РљРѕРјРїР°СЃ РїРѕ С†РµРЅС‚СЂСѓ
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(CompasCenter))
@@ -1063,7 +1063,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				CheckBox15->Checked=false;
 		}
 
-		//Режим Альт-Азимут
+		//Р РµР¶РёРј РђР»СЊС‚-РђР·РёРјСѓС‚
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(AltAzim))
@@ -1080,7 +1080,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			}
 		}
 
-		//Формат даты
+		//Р¤РѕСЂРјР°С‚ РґР°С‚С‹
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos("date_format = "))
@@ -1095,7 +1095,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 				ComboBox2->ItemIndex=3;
 		}
 
-		//Скорость перелета к объекту
+		//РЎРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµР»РµС‚Р° Рє РѕР±СЉРµРєС‚Сѓ
 		for (int i=0;i<Lua->Count;i++)
 			if ((op=Lua->Strings[i].Pos(CustomDuration))>0)
 				for (int k=op;k<=Lua->Strings[i].Length();k++)
@@ -1103,7 +1103,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 						DigitDur+=Lua->Strings[i][k];
 		Edit4->Text=DigitDur;
 
-		//Цветовые схемы
+		//Р¦РІРµС‚РѕРІС‹Рµ СЃС…РµРјС‹
 		for (int i=0;i<Lua->Count;i++)
 		{
 			if (Lua->Strings[i].Pos(" cFrameFill = "))
@@ -1125,10 +1125,10 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 //---------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-//                         СОХРАНЕНИЕ НАСТРОЕК                                //
+//                         РЎРћРҐР РђРќР•РќРР• РќРђРЎРўР РћР•Рљ                                //
 ////////////////////////////////////////////////////////////////////////////////
 
-//ОСНОВНЫЕ
+//РћРЎРќРћР’РќР«Р•
 void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 {
 	TStringList *Main=new TStringList;
@@ -1136,7 +1136,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	String Rings="  RingSystemSections     ";
 	Main->LoadFromFile(ExtractFilePath(Application->ExeName) + "celestia.cfg");
 
-	//Точки орбит и кольца планет
+	//РўРѕС‡РєРё РѕСЂР±РёС‚ Рё РєРѕР»СЊС†Р° РїР»Р°РЅРµС‚
 	if (Edit2->Text!="" && StrToInt(Edit2->Text)>=80 && StrToInt(Edit2->Text)<=400)
 	{
 		if (Edit3->Text!="" && StrToInt(Edit3->Text)>=100 && StrToInt(Edit3->Text)<=2000)
@@ -1166,7 +1166,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		return;
 	}
 
-	//Папки с дополнениями
+	//РџР°РїРєРё СЃ РґРѕРїРѕР»РЅРµРЅРёСЏРјРё
 	for (int i=0;i<Main->Count;i++)
 		if ((Main->Strings[i].Pos("ExtrasDirectories")>0) && (Main->Strings[i][1] != '#'))
 		{
@@ -1195,7 +1195,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	if (EditDir1->Text=="")
 		Application->MessageBox(MessegesLocale[3].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 
-	//Курсор
+	//РљСѓСЂСЃРѕСЂ
 	if (RadioButton1->Checked)
 	{
 		for (int i=0;i<Main->Count;i++)
@@ -1223,7 +1223,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 	}
 
-	//Директория скриншотов
+	//Р”РёСЂРµРєС‚РѕСЂРёСЏ СЃРєСЂРёРЅС€РѕС‚РѕРІ
 	int n;
 	for (int i=0;i<Main->Count;i++)
 	if ((Main->Strings[i].Pos("ScriptScreenshotDirectory")>0) && (Main->Strings[i][1] != '#'))
@@ -1243,7 +1243,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 	}
 
-	//Параметр   ScriptSystemAccessPolicy
+	//РџР°СЂР°РјРµС‚СЂ   ScriptSystemAccessPolicy
 	for (int i=0;i<Main->Count;i++)
 	{
 		if(Main->Strings[i].Pos("  ScriptSystemAccessPolicy"))
@@ -1257,7 +1257,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 	}
 
-	//Стартовый сценарий
+	//РЎС‚Р°СЂС‚РѕРІС‹Р№ СЃС†РµРЅР°СЂРёР№
 	for (int i=0;i<Main->Count;i++)
 	if ((Main->Strings[i].Pos("InitScript")>0) && (Main->Strings[i][1] != '#'))
 	{
@@ -1281,7 +1281,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 	}
 
-	//Demo сценарий
+	//Demo СЃС†РµРЅР°СЂРёР№
 	for (int i=0;i<Main->Count;i++)
 	if ((Main->Strings[i].Pos("DemoScript")>0) && (Main->Strings[i][1] != '#'))
 	{
@@ -1305,7 +1305,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 	}
 
-	//Скорость вращения
+	//РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°С‰РµРЅРёСЏ
 	if (Edit5->Text!="" && StrToInt(Edit5->Text)>=5 && StrToInt(Edit5->Text)<=400)
 	{
 		for (int i=0;i<Main->Count;i++)
@@ -1322,7 +1322,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		return;
 	}
 
-	//Чувствительность мыши
+	//Р§СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚СЊ РјС‹С€Рё
 	FormatSettings.DecimalSeparator='.';
 	for (int i=0;i<Main->Count;i++)
 	{
@@ -1333,7 +1333,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	Main->SaveToFile(ExtractFilePath(Application->ExeName)+"celestia.cfg");
 	delete Main;
 
-	//Музыкальный проигрыватель для Celestia EP v2.0
+	//РњСѓР·С‹РєР°Р»СЊРЅС‹Р№ РїСЂРѕРёРіСЂС‹РІР°С‚РµР»СЊ РґР»СЏ Celestia EP v2.0
 	if(GroupBox6->Visible==true)
 	{
 		EP = new TIniFile(ExtractFilePath(Application->ExeName)+"celestia_ep.ini");
@@ -1349,41 +1349,41 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
-//ОБЪЕКТЫ И ВРЕМЯ
+//РћР‘РЄР•РљРўР« Р Р’Р Р•РњРЇ
 void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 {
-	//Солнечные вспышки
+	//РЎРѕР»РЅРµС‡РЅС‹Рµ РІСЃРїС‹С€РєРё
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\sun\\","sun_flares",CheckBox1);
 	else
 		ObjectSave("extras\\","sun_flares",CheckBox1);
 
-	//Кольца Юпитера
+	//РљРѕР»СЊС†Р° Р®РїРёС‚РµСЂР°
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","Jupiter Rings",CheckBox2);
 	else
 		ObjectSave("extras\\","Jupiter Rings",CheckBox2);
 
-	//Достопримечательности Марса
+	//Р”РѕСЃС‚РѕРїСЂРёРјРµС‡Р°С‚РµР»СЊРЅРѕСЃС‚Рё РњР°СЂСЃР°
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\planets-&-moons\\mars\\","Mars Surface Features",CheckBox10);
 	else
 		ObjectSave("extras\\Solar System\\Planet\\Mars\\","Mars Surface Features",CheckBox10);
 
-	//Пояс Койпера
+	//РџРѕСЏСЃ РљРѕР№РїРµСЂР°
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\","kuiper-belt",CheckBox17);
 	else
 		ObjectSave("extras\\","Kuiper_Belt",CheckBox17);
 
-	//Динамическая атмосфера Юпитера
+	//Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ Р°С‚РјРѕСЃС„РµСЂР° Р®РїРёС‚РµСЂР°
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","JupClouds",CheckBox18);
 	else
 		ObjectSave("extras\\","Jupiter_Clouds",CheckBox18);
 
-	//Вулканы Ио
-	if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //недочет в самой сборке
+	//Р’СѓР»РєР°РЅС‹ РРѕ
+	if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //РЅРµРґРѕС‡РµС‚ РІ СЃР°РјРѕР№ СЃР±РѕСЂРєРµ
 		ObjectSave("extras\\","iovolcanoes\\iovolcanoes",CheckBox19);
 	else
 	{
@@ -1393,22 +1393,22 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 			ObjectSave("extras\\","iovolcanoes",CheckBox19);
 	}
 
-	//Космический лифт
+	//РљРѕСЃРјРёС‡РµСЃРєРёР№ Р»РёС„С‚
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\fiction-objects\\","space-lift",CheckBox20);
 	else
 		ObjectSave("extras\\","Space Lift",CheckBox20);
 
-	//Облако Оорта
+	//РћР±Р»Р°РєРѕ РћРѕСЂС‚Р°
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\","oort-cloud",CheckBox61);
 	else
 		ObjectSave("extras\\","Oort_Cloud",CheckBox61);
 
-	//Подсветка частиц колец Сатурна
+	//РџРѕРґСЃРІРµС‚РєР° С‡Р°СЃС‚РёС† РєРѕР»РµС† РЎР°С‚СѓСЂРЅР°
 	HSatRingsSave("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
 
-	//Космические аппараты...
+	//РљРѕСЃРјРёС‡РµСЃРєРёРµ Р°РїРїР°СЂР°С‚С‹...
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		EndingSave("data\\spacecrafts\\near-earth-missions\\", "mir", "mir.ssc", CheckBox9);
 	else
@@ -1459,15 +1459,15 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 	else
 		EndingSave("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
 
-	//EndingSave("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); нет информации об Ending'е
-	//EndingSave("extras\\", "Corot", "Corot.ssc", CheckBox31); нет информации об Ending'е
+	//EndingSave("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//EndingSave("extras\\", "Corot", "Corot.ssc", CheckBox31); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 //	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 //		EndingSave("data\\spacecrafts\\space-observatories\\", "herschel", "herschel.ssc", CheckBox32);
 //	else
 //		EndingSave("extras\\", "herschel", "herschel.ssc", CheckBox32);
 
-	//EndingSave("extras\\", "Voyager", "voyager.ssc", CheckBox33);  нет информации об Ending'е
+	//EndingSave("extras\\", "Voyager", "voyager.ssc", CheckBox33);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		EndingSave("data\\spacecrafts\\kuiper-belt-missions\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
@@ -1489,7 +1489,7 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 	else
 		EndingSave("extras\\", "envisat", "envisat.ssc", CheckBox37);
 
-	//EndingSave("extras\\", "ao7", "AO7.ssc", CheckBox38);   нет информации об Ending'е
+	//EndingSave("extras\\", "ao7", "AO7.ssc", CheckBox38);   РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 //	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 //		EndingSave("data\\spacecrafts\\moon-missions\\", "apollo10", "apollo10.ssc", CheckBox39);
@@ -1526,7 +1526,7 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 	else
 		EndingSave("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
 
-	//EndingSave("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  нет информации об Ending'е
+	//EndingSave("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		EndingSave("data\\spacecrafts\\moon-missions\\", "lro", "lro.ssc", CheckBox46);
@@ -1543,16 +1543,16 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 	else
 		EndingSave("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
 
-	//EndingSave("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  нет информации об Ending'е
-	//EndingSave("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  нет информации об Ending'е
-	//EndingSave("extras\\", "messenger", "messenger.ssc", CheckBox51);  нет информации об Ending'е
+	//EndingSave("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//EndingSave("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//EndingSave("extras\\", "messenger", "messenger.ssc", CheckBox51);  РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		EndingSave("data\\spacecrafts\\mars-missions\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 	else
 		EndingSave("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 
-	//EndingSave("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); нет информации об Ending'е
+	//EndingSave("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		EndingSave("data\\spacecrafts\\interplanetary-missions\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
@@ -1598,7 +1598,7 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
-//LUA-ИНСТРУМЕНТЫ
+//LUA-РРќРЎРўР РЈРњР•РќРўР«
 void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 {
 	String Show;
@@ -1628,7 +1628,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 	TStringList *Lua=new TStringList;
 	Lua->LoadFromFile(ExtractFilePath(Application->ExeName)+LuaAdr+"config.lua");
 
-	//Показывать панель
+	//РџРѕРєР°Р·С‹РІР°С‚СЊ РїР°РЅРµР»СЊ
 	if (CheckBox4->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1646,7 +1646,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Инфо об обьекте
+	//РРЅС„Рѕ РѕР± РѕР±СЊРµРєС‚Рµ
 	if (CheckBox5->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1664,7 +1664,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Координаты
+	//РљРѕРѕСЂРґРёРЅР°С‚С‹
 	if (CheckBox6->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1682,7 +1682,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Режим "Увеличение"
+	//Р РµР¶РёРј "РЈРІРµР»РёС‡РµРЅРёРµ"
 	if (CheckBox11->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1700,7 +1700,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Диаграмма Г-Р
+	//Р”РёР°РіСЂР°РјРјР° Р“-Р 
 	if (CheckBox12->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1718,7 +1718,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Кеплеровы параметры
+	//РљРµРїР»РµСЂРѕРІС‹ РїР°СЂР°РјРµС‚СЂС‹
 	if (CheckBox7->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1736,7 +1736,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Джойстик
+	//Р”Р¶РѕР№СЃС‚РёРє
 	if (CheckBox13->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1754,7 +1754,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Компас
+	//РљРѕРјРїР°СЃ
 	if (CheckBox8->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1772,7 +1772,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Пояс астероидов
+	//РџРѕСЏСЃ Р°СЃС‚РµСЂРѕРёРґРѕРІ
 	TStringList *Addon = new TStringList;
 			Addon->LoadFromFile(ExtractFilePath(Application->ExeName)+LuaAdr+"\\adds\\Asteroid_Belt\\"+"Asteroid_Belt.ssc");
 	if (CheckBox63->Checked==true)
@@ -1783,7 +1783,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 	Addon->SaveToFile(ExtractFilePath(Application->ExeName)+LuaAdr+"\\adds\\Asteroid_Belt\\"+"Asteroid_Belt.ssc");
 	delete Addon;
 
-	//Показывать местное время
+	//РџРѕРєР°Р·С‹РІР°С‚СЊ РјРµСЃС‚РЅРѕРµ РІСЂРµРјСЏ
 	if (CheckBox14->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1801,7 +1801,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Компасс по центру
+	//РљРѕРјРїР°СЃСЃ РїРѕ С†РµРЅС‚СЂСѓ
 	if (CheckBox15->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1819,7 +1819,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Режим Альт-Азимут
+	//Р РµР¶РёРј РђР»СЊС‚-РђР·РёРјСѓС‚
 	if (CheckBox16->Checked)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1837,7 +1837,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Формат даты
+	//Р¤РѕСЂРјР°С‚ РґР°С‚С‹
 	for (int i=0;i<Lua->Count;i++)
 	{
 		if(Lua->Strings[i].Pos("date_format = "))
@@ -1853,7 +1853,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		}
 	}
 
-	//Длительность перелета к объекту
+	//Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РїРµСЂРµР»РµС‚Р° Рє РѕР±СЉРµРєС‚Сѓ
 	if (Edit4->Text!="" && StrToInt(Edit4->Text)>=0 && StrToInt(Edit4->Text)<=20)
 	{
 		for (int i=0;i<Lua->Count;i++)
@@ -1870,7 +1870,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		return;
 	}
 
-	//Цветовая схема
+	//Р¦РІРµС‚РѕРІР°СЏ СЃС…РµРјР°
 	for (int i=0;i<Lua->Count;i++)
 	{
 		if(Lua->Strings[i].Pos(" cFrameFill = "))
@@ -1907,7 +1907,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
-//О ПРОГРАММЕ
+//Рћ РџР РћР“Р РђРњРњР•
 void __fastcall TMainForm::LabelLink2Click(TObject *Sender)
 {
 	ShellExecute(Handle, NULL, L"http://www.celestiaproject.ru", NULL, NULL, SW_SHOWNORMAL);
@@ -1958,17 +1958,17 @@ void __fastcall TMainForm::Edit3Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-//                   ВОССТАНОВЛЕНИЕ ЗНАЧЕНИЙ ПО УМОЛЧАНИЮ                     //
+//                   Р’РћРЎРЎРўРђРќРћР’Р›Р•РќРР• Р—РќРђР§Р•РќРР™ РџРћ РЈРњРћР›Р§РђРќРР®                     //
 ////////////////////////////////////////////////////////////////////////////////
 
 void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 {
 	if (Application->MessageBox(MessegesLocale[7].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
 	{
-		//Для того, чтобы при выполнении кнопок "Сохранить" не выскакивало сообщение
+		//Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё РєРЅРѕРїРѕРє "РЎРѕС…СЂР°РЅРёС‚СЊ" РЅРµ РІС‹СЃРєР°РєРёРІР°Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ
 		AutoSave=true;
 
-		//Основные
+		//РћСЃРЅРѕРІРЅС‹Рµ
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		{
 			EditDir1->Text="data";
@@ -1994,7 +1994,7 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 		ScrollBar2->Position=10;
 		BitBtn1->Click();
 
-		//Объекты и время
+		//РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ
 		CheckBox1->State=0;
 		CheckBox2->State=1;
 		CheckBox10->State=1;
@@ -2004,7 +2004,7 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 		CheckBox20->State=0;
 		CheckBox61->State=0;
 		CheckBox62->State=0;
-		//Космические аппараты
+		//РљРѕСЃРјРёС‡РµСЃРєРёРµ Р°РїРїР°СЂР°С‚С‹
 		CheckBox9->State=0;
 		CheckBox3->State=0;
 		CheckBox23->State=0;
@@ -2038,8 +2038,8 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 		CheckBox60->State=0;
 		BitBtn2->Click();
 
-		//LUA-инструменты
-		if(Label11->Caption.Pos("Tools")) //если Lua-инструменты установлены
+		//LUA-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹
+		if(Label11->Caption.Pos("Tools")) //РµСЃР»Рё Lua-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹
 		{
 			CheckBox4->State=1;
 			CheckBox5->State=0;
@@ -2126,7 +2126,7 @@ void __fastcall TMainForm::ButtonDir3Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-//Обработка клика по картинкам курсоров
+//РћР±СЂР°Р±РѕС‚РєР° РєР»РёРєР° РїРѕ РєР°СЂС‚РёРЅРєР°Рј РєСѓСЂСЃРѕСЂРѕРІ
 void __fastcall TMainForm::Image2Click(TObject *Sender)
 {
 	RadioButton1->Checked=true;
@@ -2145,7 +2145,7 @@ void __fastcall TMainForm::Image4Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-//Запрет редактирования полей папок
+//Р—Р°РїСЂРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕР»РµР№ РїР°РїРѕРє
 
 void __fastcall TMainForm::Label10MouseLeave(TObject *Sender)
 {
@@ -2320,10 +2320,10 @@ void __fastcall TMainForm::CheckBox22Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////
-//                               НОВЫЕ ФУНКЦИИ                                //
+//                               РќРћР’Р«Р• Р¤РЈРќРљР¦РР                                //
 ////////////////////////////////////////////////////////////////////////////////
 
-//Проверка вкладки Объекты и время
+//РџСЂРѕРІРµСЂРєР° РІРєР»Р°РґРєРё РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ
 void TMainForm::ObjectProv(String PodFolder, String Folder, String SSC, TCheckBox *Check)
 {
 	if (FileExists(ExtractFilePath(Application->ExeName)+PodFolder+Folder+"\\"+SSC) || FileExists(ExtractFilePath(Application->ExeName)+"temp\\"+Folder+"\\"+SSC))
@@ -2339,25 +2339,25 @@ void TMainForm::ObjectProv(String PodFolder, String Folder, String SSC, TCheckBo
 		Check->Checked=false;
 		Check->Enabled=false;
 
-		//Добавляем ссылки на скачивание
-		if(Check==CheckBox10) //Достопримечательности Марса
+		//Р”РѕР±Р°РІР»СЏРµРј СЃСЃС‹Р»РєРё РЅР° СЃРєР°С‡РёРІР°РЅРёРµ
+		if(Check==CheckBox10) //Р”РѕСЃС‚РѕРїСЂРёРјРµС‡Р°С‚РµР»СЊРЅРѕСЃС‚Рё РњР°СЂСЃР°
 			Label16->Visible=true;
 
-		if(Check==CheckBox17) //Пояс Койпера
+		if(Check==CheckBox17) //РџРѕСЏСЃ РљРѕР№РїРµСЂР°
 			Label13->Visible=true;
 
-		if(Check==CheckBox18) //Динамическая модель атмосферы Юпитера
+		if(Check==CheckBox18) //Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ РјРѕРґРµР»СЊ Р°С‚РјРѕСЃС„РµСЂС‹ Р®РїРёС‚РµСЂР°
 			Label33->Visible=true;
 
-		if(Check==CheckBox61) //Облако Оорта
+		if(Check==CheckBox61) //РћР±Р»Р°РєРѕ РћРѕСЂС‚Р°
 			Label8->Visible=true;
 
-		if(Check==CheckBox20) //Космический Лифт
+		if(Check==CheckBox20) //РљРѕСЃРјРёС‡РµСЃРєРёР№ Р›РёС„С‚
 			Label15->Visible=true;
 	}
 }
 
-//Сохранение настроек вкладки Объекты и время
+//РЎРѕС…СЂР°РЅРµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє РІРєР»Р°РґРєРё РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ
 void TMainForm::ObjectSave(String PodFolder, String Folder, TCheckBox *Check)
 {
 	String path1,path2;
@@ -2377,7 +2377,7 @@ void TMainForm::ObjectSave(String PodFolder, String Folder, TCheckBox *Check)
 	path2 = NULL;
 }
 
-//Проверка космических аппаратов
+//РџСЂРѕРІРµСЂРєР° РєРѕСЃРјРёС‡РµСЃРєРёС… Р°РїРїР°СЂР°С‚РѕРІ
 void TMainForm::EndingProv(String Dir, String Folder, String SSC, TCheckBox *Check)
 {
 	if(FileExists(ExtractFilePath(Application->ExeName)+Dir+Folder+"\\"+SSC))
@@ -2395,7 +2395,7 @@ void TMainForm::EndingProv(String Dir, String Folder, String SSC, TCheckBox *Che
 		Check->Enabled=false;
 }
 
-//Сохранение параметров космических аппаратов
+//РЎРѕС…СЂР°РЅРµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕСЃРјРёС‡РµСЃРєРёС… Р°РїРїР°СЂР°С‚РѕРІ
 void TMainForm::EndingSave(String Dir, String Folder, String SSC, TCheckBox *Check)
 {
 	if(Check->Enabled==true)
@@ -2415,7 +2415,7 @@ void TMainForm::EndingSave(String Dir, String Folder, String SSC, TCheckBox *Che
     }
 }
 
-//Выбрать все чекбоксы космических кораблей
+//Р’С‹Р±СЂР°С‚СЊ РІСЃРµ С‡РµРєР±РѕРєСЃС‹ РєРѕСЃРјРёС‡РµСЃРєРёС… РєРѕСЂР°Р±Р»РµР№
 void TMainForm::CheckAll(bool checked)
 {
 	CheckBox9->Checked=checked;
@@ -2427,30 +2427,30 @@ void TMainForm::CheckAll(bool checked)
 	CheckBox27->Checked=checked;
 	CheckBox28->Checked=checked;
 	CheckBox29->Checked=checked;
-	//CheckBox30->Checked=checked; нет информации об Ending'е
-	//CheckBox31->Checked=checked; нет информации об Ending'е
+	//CheckBox30->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//CheckBox31->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 	//CheckBox32->Checked=checked;
-	//CheckBox33->Checked=checked; нет информации об Ending'е
+	//CheckBox33->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 	CheckBox34->Checked=checked;
 	CheckBox35->Checked=checked;
 	CheckBox36->Checked=checked;
 	CheckBox37->Checked=checked;
-	//CheckBox38->Checked=checked;м
+	//CheckBox38->Checked=checked;Рј
 	//CheckBox39->Checked=checked;
 	CheckBox40->Checked=checked;
 	CheckBox41->Checked=checked;
 	CheckBox42->Checked=checked;
 	CheckBox43->Checked=checked;
 	CheckBox44->Checked=checked;
-	//CheckBox45->Checked=checked; нет информации об Ending'е
+	//CheckBox45->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 	//CheckBox46->Checked=checked;
 	CheckBox47->Checked=checked;
 	CheckBox48->Checked=checked;
-	//CheckBox49->Checked=checked; нет информации об Ending'е
-	//CheckBox50->Checked=checked; нет информации об Ending'е
-	//CheckBox51->Checked=checked; нет информации об Ending'е
+	//CheckBox49->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//CheckBox50->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
+	//CheckBox51->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 	CheckBox52->Checked=checked;
-	//CheckBox53->Checked=checked; нет информации об Ending'е
+	//CheckBox53->Checked=checked; РЅРµС‚ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Ending'Рµ
 	CheckBox54->Checked=checked;
 	CheckBox55->Checked=checked;
 	CheckBox56->Checked=checked;
@@ -2465,10 +2465,10 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 {
 	if(ImportDialog->Execute())
 	{
-		//Для того, чтобы при выполнении кнопок "Сохранить" не выскакивало сообщение
+		//Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё РєРЅРѕРїРѕРє "РЎРѕС…СЂР°РЅРёС‚СЊ" РЅРµ РІС‹СЃРєР°РєРёРІР°Р»Рѕ СЃРѕРѕР±С‰РµРЅРёРµ
 		AutoSave=true;
 
-		//Основные
+		//РћСЃРЅРѕРІРЅС‹Рµ
 		Settings = new TIniFile(ImportDialog->FileName);
 		EditDir1->Text=Settings->ReadString("Main","ExtrasDir1","");
 		EditDir2->Text=Settings->ReadString("Main","ExtrasDir2","");
@@ -2491,7 +2491,7 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 		Edit1->Text=Settings->ReadString("Main","MouseRotationSensitivity","");
 		BitBtn1->Click();
 
-		//Объекты и время
+		//РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ
 		CheckBox1->State=Settings->ReadBool("ObjectsTime","SunFlares",0);
 		CheckBox2->State=Settings->ReadBool("ObjectsTime","JupiterRings",0);
 		CheckBox10->State=Settings->ReadBool("ObjectsTime","MarsSurfaceFeatures",0);
@@ -2502,7 +2502,7 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 		CheckBox61->State=Settings->ReadBool("ObjectsTime","OortCloud",0);
 		CheckBox62->State=Settings->ReadBool("ObjectsTime","HighlightSaturnRings",0);
 
-		//Космические аппараты
+		//РљРѕСЃРјРёС‡РµСЃРєРёРµ Р°РїРїР°СЂР°С‚С‹
 		CheckBox9->State=Settings->ReadBool("Spacecrafts","Mir",0);
 		CheckBox3->State=Settings->ReadBool("Spacecrafts","Galileo",0);
 		CheckBox23->State=Settings->ReadBool("Spacecrafts","CassiniHuygens",0);
@@ -2536,8 +2536,8 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 		CheckBox60->State=Settings->ReadBool("Spacecrafts","Zond3",0);
 		BitBtn2->Click();
 
-		//LUA-инструменты
-		if(Label11->Visible==false) //если Lua-инструменты установлены
+		//LUA-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹
+		if(Label11->Visible==false) //РµСЃР»Рё Lua-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹
 		{
 			CheckBox4->State=Settings->ReadBool("LuaTools","ShowTools",0);
 			CheckBox5->State=Settings->ReadBool("LuaTools","Info",0);
@@ -2587,7 +2587,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 {
 	if(ExportDialog->Execute())
 	{
-		//Основные
+		//РћСЃРЅРѕРІРЅС‹Рµ
 		Settings = new TIniFile(ExportDialog->FileName);
 		Settings->WriteString("Main","ExtrasDir1",EditDir1->Text);
 		Settings->WriteString("Main","ExtrasDir2",EditDir2->Text);
@@ -2610,7 +2610,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 		Settings->WriteString("Main","RotateAcceleration",Edit5->Text);
 		Settings->WriteString("Main","MouseRotationSensitivity",Edit1->Text);
 
-		//Объекты и время
+		//РћР±СЉРµРєС‚С‹ Рё РІСЂРµРјСЏ
 		Settings->WriteBool("ObjectsTime","SunFlares",CheckBox1->State);
 		Settings->WriteBool("ObjectsTime","JupiterRings",CheckBox2->State);
 		Settings->WriteBool("ObjectsTime","MarsSurfaceFeatures",CheckBox10->State);
@@ -2621,7 +2621,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 		Settings->WriteBool("ObjectsTime","OortCloud",CheckBox61->State);
 		Settings->WriteBool("ObjectsTime","HighlightSaturnRings",CheckBox62->State);
 
-		//Космические аппараты
+		//РљРѕСЃРјРёС‡РµСЃРєРёРµ Р°РїРїР°СЂР°С‚С‹
 		Settings->WriteBool("Spacecrafts","Mir",CheckBox9->State);
 		Settings->WriteBool("Spacecrafts","Galileo",CheckBox3->State);
 		Settings->WriteBool("Spacecrafts","CassiniHuygens",CheckBox23->State);
@@ -2654,8 +2654,8 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 		Settings->WriteBool("Spacecrafts","Viking",CheckBox59->State);
 		Settings->WriteBool("Spacecrafts","Zond3",CheckBox60->State);
 
-		//LUA-инструменты
-		if(Label11->Visible==false) //если не установлены
+		//LUA-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹
+		if(Label11->Visible==false) //РµСЃР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹
 		{
 			Settings->WriteBool("LuaTools","ShowTools",CheckBox4->State);
 			Settings->WriteBool("LuaTools","Info",CheckBox5->State);
