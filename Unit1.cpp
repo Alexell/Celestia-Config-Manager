@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -2712,13 +2712,11 @@ void __fastcall TMainForm::Label13MouseMove(TObject *Sender, TShiftState Shift, 
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TMainForm::Label13Click(TObject *Sender)
 {
 	ShellExecute(Handle, NULL, LinkLocale[3].c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TMainForm::Link1MouseLeave(TObject *Sender)
 {
@@ -2730,12 +2728,6 @@ void __fastcall TMainForm::Link1MouseMove(TObject *Sender, TShiftState Shift, in
           int Y)
 {
 	Link1->Font->Style = TFontStyles() << fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link1Click(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, Link[1].c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2752,12 +2744,6 @@ void __fastcall TMainForm::Link2MouseMove(TObject *Sender, TShiftState Shift, in
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Link2Click(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, Link[2].c_str(), NULL, NULL, SW_SHOWNORMAL);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMainForm::Link3MouseLeave(TObject *Sender)
 {
 	Link3->Font->Style = TFontStyles() >> fsUnderline << fsBold;
@@ -2771,12 +2757,6 @@ void __fastcall TMainForm::Link3MouseMove(TObject *Sender, TShiftState Shift, in
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Link3Click(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, Link[3].c_str(), NULL, NULL, SW_SHOWNORMAL);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMainForm::Link4MouseLeave(TObject *Sender)
 {
 	Link4->Font->Style = TFontStyles() >> fsUnderline << fsBold;
@@ -2787,12 +2767,6 @@ void __fastcall TMainForm::Link4MouseMove(TObject *Sender, TShiftState Shift, in
           int Y)
 {
 	Link4->Font->Style = TFontStyles() << fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link4Click(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, Link[4].c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2890,4 +2864,3 @@ void __fastcall TMainForm::HlpClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
