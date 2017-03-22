@@ -1,0 +1,183 @@
+﻿[Main]
+Label19=Vous utilisez:
+Label32=Télécharger la nouvelle version
+MainTab=Principale
+GroupBox1=Répertoires Extras
+LabelDir1=Répertoire addons standards(défaut)
+LabelDir2=Répertoire addons(défaut)
+LabelDir3=Répertoire addons personnel (optionnel)
+LabelDirComment=Il y a des dossiers "addons" pour Celestia. Vous pouvez ajouter ou modifier ces dossiers afin que Celestia trouve vos "addons".
+Label5=Combien de points d'échantillonnage à utiliser pour le rendu des orbites:
+Label1=Valeurs autorisées: de 80 à 400
+Label6=Nombre de segments dans lequel les systemes d'anneaux sont représentés:
+Label2=Valeurs autorisées: de 100 à 2000
+GroupBox4=Curseur dans Celestia
+RadioButton1=Croix
+RadioButton2=Croix en négatif
+RadioButton3=Flèche
+GroupBox7=Scripts
+Label20=Script, répertoire des captures d'écran
+Label21=Script, Accès au système de polices
+Label22=Script initial
+Label23=Script de démonstration
+Label24=Vitesse de rotation de l'objet observé, quand vous vous servez des flèches [<-] ou [->]
+Label26=Note: Etant proche de la surface de la planète, ce paramètre affecte la vitesse de rotation en mode 'Planétarium'.
+Label25=Sensibilité de rotation avec la souris:
+Label27=Note: La valeur 0.0 désactive cette fonction.
+GroupBox6=Musique accessoire dans Celestia EP v2.0
+CheckBox21=Activée
+PlayerEdit=Path de votrer media player (requis):
+Help=Aide
+
+[ObjectsTime]
+ObjectTab=Objets et temps
+GroupBox2=Montrer
+CheckBox1=Eruptions solaires
+CheckBox2=Anneaux de Jupiter
+CheckBox10=Locations sur Mars (pack de Leserg)
+CheckBox17=Ceinture de Kuiper
+CheckBox18=Nuages dynamiques pour Jupiter
+CheckBox19=Volcans de Io 3D
+CheckBox20=Ascenceur spatial
+CheckBox61=Nuage d'Oort
+CheckBox62=Haute visibilité des anneaux de Saturne (seulement Celestia EP v3.0)
+GroupBox5=Astronefs qui ne sont plus en fonction
+Page1=Page 1
+Page2=Page 2
+
+[Spacecrafts]
+CheckBox9=Mir
+CheckBox3=Galileo
+CheckBox23=Cassini-Huygens
+CheckBox24=Sat 1
+CheckBox25=Sat 2
+CheckBox26=Sat 3
+CheckBox27=Salyut 7
+CheckBox28=Mariner
+CheckBox29=Venus Express
+CheckBox30=Chandra X-Ray Observatory
+CheckBox31=Corot
+CheckBox32=Herschel
+CheckBox33=Voyager 1 et 2
+CheckBox34=New Horizons
+CheckBox35=Spitzer
+CheckBox36=ISO
+CheckBox37=Envisat
+CheckBox38=AMSAT-OSCAR 7
+CheckBox39=Apollo 10 et 11
+CheckBox40=Dawn
+CheckBox41=Deep Impact
+CheckBox42=Giotto
+CheckBox43=Helios 1 et 2
+CheckBox44=ICE
+CheckBox45=Luna et Lunokhod
+CheckBox46=LRO
+CheckBox47=Magellan
+CheckBox48=Mars Express
+CheckBox49=MGS
+CheckBox50=MRO
+CheckBox51=Messenger
+CheckBox52=Nozomi
+CheckBox53=Phoenix Lander
+CheckBox54=Pioneers
+CheckBox55=Planck
+CheckBox56=Rosetta
+CheckBox57=Ulysses
+CheckBox58=Venera
+CheckBox59=Viking
+CheckBox60=Zond 3
+CheckBox22=Tout sélectionner
+
+[LuaTools]
+CheckBox4=Voir au démarrage de Celestia
+GroupBox3=Voir automatiquement
+CheckBox5=Informations sur les objets
+CheckBox6=Coordonnées
+CheckBox11=Mode Zoom
+CheckBox12=Diagramme H-R
+CheckBox7=Paramètres Kepleriens
+CheckBox13=Joystick Virtuel
+CheckBox8=Boussole
+GroupBox13=Objets à partir du catalogue "addons"
+CheckBox63=Ceinture principale
+GroupBox8=Options avancées
+CheckBox14=Voir le temps local
+CheckBox15=Centrer la boussole
+CheckBox16=Alt-azimuth mode désactivé
+Label29=Format de la date:
+Label28=Personnaliser la durée du "goto"
+RadioGroup1=Schéma de couleur
+Label11=Lua Tools non trouvés!
+
+[ManageSettings]
+SettingsTab=Régler les options
+GroupBox9=Régler les Imports
+Label17=Il est possible d'importer un fichier avec les paramètres et qui a été exporté plus tôt. Vous obtiendrez la configuration exacte qui avai été exportée.
+Button3=Sélection du fichier à importer
+GroupBox10=Régler les Exports
+Label18=Il est possible d'exporter les paramètres vers un fichier. C'est pratique, si vous deviez réinstaller Celestia ou le système d'exploitation entier.
+Button4=Régler les paramètres à exporter
+GroupBox11=Restorer les paramètres par défaut
+Label9=Lors de la restauration des paramètres d'origine, les valeurs par défaut sont appliquées à tous les paramètres Celestia, Lua-tools et addons.
+BitBtn4=Effectuer la récupération
+
+[About]
+AboutTab=Au sujet
+Label7=Configuration manager a été développé pour Celestia 1.6.1, Celestia Educational et Celestia Extended Pack. Il est conçu pour rendre la configuration de Celestia précise et pour gérer ses addons. Il supporte la plupart des astronefs et intègre les outils: Lua Edu Tools v1.2 beta 8, v1.2 beta 9, Lua Universal Tools v1.0, v2.0.
+Label3=Merci à: Sergey Leonov alias Leserg pour les tests de la première version et ses précieux conseils; Artyom Volgin alias Zemlyanin pour ses idées sur la fonctionnalité et les tests sur toutes les versions.
+LabelCelestia=Celestia en Russie
+Label4=Forum de discussions sur
+Label10=shatters.net/forum
+GroupBox12=Téléchargements recommandés
+
+[Strings]
+AppName=Celestia Config Manager
+EIDialogFilter=Fichiers de configuration
+PlayerDialogFilter=Fichiers executables
+SaveButton=Enregistrer
+Download=Ouvrir
+ComboBox1Item1=Demander
+ComboBox1Item2=Autoriser
+ComboBox1Item3=Refuser
+ComboBox2Item1=Pays par défaut
+ComboBox2Item2=jj/mm/aaaa
+ComboBox2Item3=mm/jj/aaaa
+ComboBox2Item4=aaaa/mm/jj
+RadioGroup1Item1=Transparence incolore
+RadioGroup1Item2=Translucence bleue
+RadioGroup1Item3=Vert translucide
+RadioGroup1Item4=Pourpre translucide
+Unknown=inconnu
+Outdated=(en dehors des dates)
+Version=Version
+NoNetwork=N° Connection Internet
+LUT2Notice=Dans Lua Universal Tools v1.5/2.0 plusieurs paramètres ne sont pas utilisés.
+LuaTools=Lua Tools
+ExtrasDir=Choisir le dossier avec les addons pour Celestia
+ScreenDir=Choisir le dossier pour les copies d'écran
+AltAzimuthOn=Alt-azimuth mode activé
+AltAzimuthOff=Alt-azimuth mode désactivé
+NoLocalizedHelp=Fichier d'aide dans votre langue introuvable. Ouvrir l'aide en anglais?
+
+[Messages]
+Message1=Pour exécuter l'utilitaire, placez-le dans le répertoire racine de Celestia.
+Message2=Valeur invalide!
+Message3=Répertoire des "addons" invalide! Le premier champ doit être spécifié.
+Message4=The 'Script initial' doit être spécifié!
+Message5=The 'Script de démo.' doit être spécifié!
+Message6=Les paramètres ont été enregistrés avec succès!
+Message7=Voulez-vous vraiment restaurer les paramètres par défaut?
+Message8=Les paramètres par défaut ont été restaurés avec succès!
+Message9=Les paramètres ont été importés avec succès!
+Message10=Les paramètres ont été exportés vers le fichier
+Message11=Disponible Mise à jour disponible pour Celestia Config Manager. Mettre à jour?
+
+[Links]
+Link1=http://www.celestiaproject.ru/?cat=7
+Link2=http://www.celestiaproject.ru/?p=1683
+Link3=http://www.celestiaproject.ru/?p=1942
+Link4=http://www.celestiaproject.ru/?p=2858
+Link5=http://www.celestiaproject.ru/?p=2852
+Link6=http://www.celestiaproject.ru/?p=2861
+Link7=http://www.celestiaproject.ru/?cat=111
+Link8=http://www.celestiaproject.ru/forum/viewtopic.php?f=18&t=873
