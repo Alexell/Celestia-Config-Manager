@@ -650,27 +650,9 @@ object MainForm: TMainForm
         Height = 409
         Caption = #1055#1086#1082#1072#1079#1099#1074#1072#1090#1100
         TabOrder = 1
-        object Label16: TLabel
-          Left = 296
-          Top = 75
-          Width = 43
-          Height = 13
-          Cursor = crHandPoint
-          Caption = #1057#1082#1072#1095#1072#1090#1100
-          Font.Charset = RUSSIAN_CHARSET
-          Font.Color = clNavy
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Visible = False
-          OnClick = Label16Click
-          OnMouseMove = Label16MouseMove
-          OnMouseLeave = Label16MouseLeave
-        end
         object Label8: TLabel
-          Left = 144
-          Top = 192
+          Left = 327
+          Top = 164
           Width = 43
           Height = 13
           Cursor = crHandPoint
@@ -687,8 +669,8 @@ object MainForm: TMainForm
           OnMouseLeave = Label8MouseLeave
         end
         object Label13: TLabel
-          Left = 144
-          Top = 99
+          Left = 327
+          Top = 72
           Width = 43
           Height = 13
           Cursor = crHandPoint
@@ -705,8 +687,8 @@ object MainForm: TMainForm
           OnMouseLeave = Label13MouseLeave
         end
         object Label15: TLabel
-          Left = 144
-          Top = 171
+          Left = 327
+          Top = 141
           Width = 43
           Height = 13
           Cursor = crHandPoint
@@ -723,8 +705,8 @@ object MainForm: TMainForm
           OnMouseLeave = Label15MouseLeave
         end
         object Label33: TLabel
-          Left = 223
-          Top = 122
+          Left = 327
+          Top = 95
           Width = 43
           Height = 13
           Cursor = crHandPoint
@@ -1174,62 +1156,54 @@ object MainForm: TMainForm
             OnClick = CheckBox22Click
           end
         end
-        object CheckBox10: TCheckBox
-          Left = 8
-          Top = 72
-          Width = 273
-          Height = 17
-          Caption = #1044#1086#1089#1090#1086#1087#1088#1080#1084#1077#1095#1072#1090#1077#1083#1100#1085#1086#1089#1090#1080' '#1052#1072#1088#1089#1072' ('#1088#1077#1083#1080#1079' '#1086#1090' Leserg)'
-          TabOrder = 3
-        end
         object CheckBox17: TCheckBox
           Left = 8
-          Top = 96
+          Top = 71
           Width = 130
           Height = 17
           Caption = #1055#1086#1103#1089' '#1050#1086#1081#1087#1077#1088#1072
-          TabOrder = 4
+          TabOrder = 3
         end
         object CheckBox18: TCheckBox
-          Left = 8
-          Top = 120
+          Left = 10
+          Top = 94
           Width = 209
           Height = 17
           Caption = #1044#1080#1085#1072#1084#1080#1095#1077#1089#1082#1091#1102' '#1072#1090#1084#1086#1089#1092#1077#1088#1091' '#1070#1087#1080#1090#1077#1088#1072
-          TabOrder = 5
+          TabOrder = 4
         end
         object CheckBox19: TCheckBox
-          Left = 8
-          Top = 144
+          Left = 10
+          Top = 117
           Width = 177
           Height = 17
           Caption = '3D '#1084#1086#1076#1077#1083#1080' '#1074#1091#1083#1082#1072#1085#1086#1074' '#1048#1086
-          TabOrder = 6
+          TabOrder = 5
         end
         object CheckBox20: TCheckBox
-          Left = 8
-          Top = 167
+          Left = 10
+          Top = 140
           Width = 130
           Height = 17
           Caption = #1050#1086#1089#1084#1080#1095#1077#1089#1082#1080#1081' '#1083#1080#1092#1090
-          TabOrder = 7
+          TabOrder = 6
         end
         object CheckBox61: TCheckBox
-          Left = 8
-          Top = 190
+          Left = 10
+          Top = 163
           Width = 130
           Height = 17
           Caption = #1054#1073#1083#1072#1082#1086' '#1054#1086#1088#1090#1072
-          TabOrder = 8
+          TabOrder = 7
         end
         object CheckBox62: TCheckBox
-          Left = 8
-          Top = 213
+          Left = 10
+          Top = 186
           Width = 362
           Height = 17
           Caption = #1055#1086#1076#1089#1074#1077#1095#1080#1074#1072#1090#1100' '#1095#1072#1089#1090#1080#1094#1099' '#1082#1086#1083#1077#1094' '#1057#1072#1090#1091#1088#1085#1072' ('#1090#1086#1083#1100#1082#1086' '#1074' Celestia EP v3.0)'
           Enabled = False
-          TabOrder = 9
+          TabOrder = 8
         end
       end
     end
@@ -1272,10 +1246,10 @@ object MainForm: TMainForm
       object Label14: TLabel
         Left = 330
         Top = 442
-        Width = 194
+        Width = 264
         Height = 13
         Cursor = crHandPoint
-        Caption = 'http://www.celestiaproject.ru/?cat=111'
+        Caption = 'https://celestiaproject.net/forum/viewforum.php?f=11'
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -1570,7 +1544,7 @@ object MainForm: TMainForm
         Width = 127
         Height = 13
         AutoSize = False
-        Caption = 'Celestia '#1074' '#1056#1086#1089#1089#1080#1080':'
+        Caption = 'Celestia Website:'
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -1602,13 +1576,12 @@ object MainForm: TMainForm
         Height = 50
         AutoSize = False
         Caption = 
-          #1052#1077#1085#1077#1076#1078#1077#1088' '#1082#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1080' '#1088#1072#1079#1088#1072#1073#1086#1090#1072#1085' '#1076#1083#1103' Celestia 1.6.1, Celestia Ed' +
-          'ucational '#1080' Celestia Extended Pack. '#1055#1088#1077#1076#1085#1072#1079#1085#1072#1095#1077#1085' '#1076#1083#1103' '#1091#1076#1086#1073#1085#1086#1081' '#1082#1086#1085 +
-          #1092#1080#1075#1091#1088#1072#1094#1080#1080' Celestia, '#1072' '#1090#1072#1082#1078#1077' '#1076#1083#1103' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1088#1072#1079#1083#1080#1095#1085#1099#1084#1080' '#1076#1086#1087#1086#1083#1085#1077#1085#1080#1103 +
-          #1084#1080'. '#1055#1086#1076#1076#1077#1088#1078#1080#1074#1072#1077#1090#1089#1103' '#1073#1086#1083#1100#1096#1080#1085#1089#1090#1074#1086' '#1082#1086#1089#1084#1080#1095#1077#1089#1082#1080#1093' '#1072#1087#1087#1072#1088#1072#1090#1086#1074', '#1072' '#1090#1072#1082#1078#1077' '#1089#1083 +
-          #1077#1076#1091#1102#1097#1080#1077' Lua-'#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099': Lua Edu Tools v1.2 beta 8, Lua Edu Tool' +
-          's v1.2 beta 9, Lua Universal Tools v1.0 '#1080' Lua Universal Tools v2' +
-          '.0.'
+          #1052#1077#1085#1077#1076#1078#1077#1088' '#1082#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1080' '#1088#1072#1079#1088#1072#1073#1086#1090#1072#1085' '#1076#1083#1103' Celestia 1.6.1 '#1080' Celestia E' +
+          'ducational. '#1055#1088#1077#1076#1085#1072#1079#1085#1072#1095#1077#1085' '#1076#1083#1103' '#1091#1076#1086#1073#1085#1086#1081' '#1082#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1080' Celestia, '#1072' '#1090#1072 +
+          #1082#1078#1077' '#1076#1083#1103' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1088#1072#1079#1083#1080#1095#1085#1099#1084#1080' '#1076#1086#1087#1086#1083#1085#1077#1085#1080#1103#1084#1080'. '#1055#1086#1076#1076#1077#1088#1078#1080#1074#1072#1077#1090#1089#1103' '#1073#1086#1083#1100#1096 +
+          #1080#1085#1089#1090#1074#1086' '#1082#1086#1089#1084#1080#1095#1077#1089#1082#1080#1093' '#1072#1087#1087#1072#1088#1072#1090#1086#1074', '#1072' '#1090#1072#1082#1078#1077' '#1089#1083#1077#1076#1091#1102#1097#1080#1077' Lua-'#1080#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099':' +
+          ' Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 '#1080' Lua Univ' +
+          'ersal Tools.'
         WordWrap = True
       end
       object LabelAbout: TLabel
@@ -1617,7 +1590,7 @@ object MainForm: TMainForm
         Width = 265
         Height = 30
         AutoSize = False
-        Caption = #1040#1074#1090#1086#1088': '#1040#1083#1077#1082#1089#1072#1085#1076#1088' '#1050#1091#1079#1085#1077#1094#1086#1074' a.k.a Alexell'
+        Caption = #1040#1074#1090#1086#1088': '#1040#1083#1077#1082#1089#1072#1085#1076#1088' '#1050#1091#1079#1085#1077#1094#1086#1074' (Alexell)'
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

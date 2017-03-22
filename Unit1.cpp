@@ -50,7 +50,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	//Вкладка "Основные"
 	Label19->Caption=Lang->ReadString("Main","Label19","You are using:")+" ";
 	Label32->Caption=Lang->ReadString("Main","Label32","Download new version");
-	LinkLocale[1]=Lang->ReadString("Links","Link1","http://sourceforge.net/projects/celestia/files/Celestia-win32-bin/");
 	ExportDialog->Filter=Lang->ReadString("Strings","EIDialogFilter","Configuration files")+"|*.cfg";
 	ImportDialog->Filter=Lang->ReadString("Strings","EIDialogFilter","Configuration files")+"|*.cfg";
 	PlayerDialog->Filter=Lang->ReadString("Strings","PlayerDialogFilter","Executable files")+"|*.exe";
@@ -91,21 +90,15 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	GroupBox2->Caption=Lang->ReadString("ObjectsTime","GroupBox2","Show");
 	CheckBox1->Caption=Lang->ReadString("ObjectsTime","CheckBox1","Sun flares");
 	CheckBox2->Caption=Lang->ReadString("ObjectsTime","CheckBox2","Jupiter rings");
-	CheckBox10->Caption=Lang->ReadString("ObjectsTime","CheckBox10","Mars Features (pack by Leserg)");
-	LinkLocale[2]=Lang->ReadString("Links","Link2","http://en.celestiaproject.ru/?p=82");
 	Label13->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox17->Caption=Lang->ReadString("ObjectsTime","CheckBox17","Kuiper Belt");
-	LinkLocale[3]=Lang->ReadString("Links","Link3","http://en.celestiaproject.ru/?p=76");
 	Label33->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox18->Caption=Lang->ReadString("ObjectsTime","CheckBox18","Dynamic clouds of Jupiter");
-	LinkLocale[4]=Lang->ReadString("Links","Link4","http://en.celestiaproject.ru/?p=53");
 	Label15->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox19->Caption=Lang->ReadString("ObjectsTime","CheckBox19","Io 3D volcanoes");
 	CheckBox20->Caption=Lang->ReadString("ObjectsTime","CheckBox20","Space lift");
-	LinkLocale[5]=Lang->ReadString("Links","Link5","http://en.celestiaproject.ru/?p=89");
 	Label8->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox61->Caption=Lang->ReadString("ObjectsTime","CheckBox61","Oort Cloud");
-	LinkLocale[6]=Lang->ReadString("Links","Link6","http://en.celestiaproject.ru/?p=85");
 	Label16->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox62->Caption=Lang->ReadString("ObjectsTime","CheckBox62","Highlight the particles of Saturn rings (only Celestia EP v3.0)");
 
@@ -185,8 +178,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	RadioGroup1->Items->Add(Lang->ReadString("Strings","RadioGroup1Item4","Purple translucent"));
 	Label11->Caption="                                                  "+Lang->ReadString("LuaTools","Label11","Lua Tools not found!");
 	Label12->Caption=Lang->ReadString("Strings","Download","Download")+":";
-	Label14->Caption=Lang->ReadString("Links","Link7","http://en.celestiaproject.ru/?cat=29");
-	LinkLocale[7]=Lang->ReadString("Links","Link7","http://en.celestiaproject.ru/?cat=29");
 	BitBtn3->Caption=Lang->ReadString("Strings","SaveButton","Save");
 
 	//Вкладка "Управление настройками"
@@ -208,7 +199,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	LabelCelestia->Caption=Lang->ReadString("About","LabelCelestia","Celestia in Russia")+":";
 	Label4->Caption=Lang->ReadString("About","Label4","Discussion")+":";
 	Label10->Caption=Lang->ReadString("About","Label10","on shatters.net/forum");
-	LinkLocale[8]=Lang->ReadString("Links","Link8","#"); //ссылка на тему англоязычного форума (форум недоступен)
 	GroupBox12->Caption=Lang->ReadString("About","GroupBox12","Recommended downloads")+":";
 
 	//Оставшиеся строки
@@ -602,12 +592,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
             ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
 		else
 			ObjectProv("extras\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
-
-		//Проверка Достопримечательностей Марса
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-            ObjectProv("data\\solar-system\\planets-&-moons\\mars\\","Mars Surface Features","Mars Features.ssc",CheckBox10);
-		else
-			ObjectProv("extras\\Solar System\\Planet\\Mars\\","Mars Surface Features","Mars Features.ssc",CheckBox10);
 
 		//Проверка Пояса Койпера
 		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
@@ -1364,12 +1348,6 @@ void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 	else
 		ObjectSave("extras\\","Jupiter Rings",CheckBox2);
 
-	//Достопримечательности Марса
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\planets-&-moons\\mars\\","Mars Surface Features",CheckBox10);
-	else
-		ObjectSave("extras\\Solar System\\Planet\\Mars\\","Mars Surface Features",CheckBox10);
-
 	//Пояс Койпера
 	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
 		ObjectSave("data\\solar-system\\","kuiper-belt",CheckBox17);
@@ -1910,7 +1888,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 //О ПРОГРАММЕ
 void __fastcall TMainForm::LabelLink2Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, L"http://www.celestiaproject.ru", NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LabelLink2MouseLeave(TObject *Sender)
@@ -1997,7 +1975,6 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 		//Объекты и время
 		CheckBox1->State=0;
 		CheckBox2->State=1;
-		CheckBox10->State=1;
 		CheckBox17->State=0;
 		CheckBox18->State=1;
 		CheckBox19->State=0;
@@ -2162,7 +2139,7 @@ void __fastcall TMainForm::Label10MouseMove(TObject *Sender, TShiftState Shift, 
 
 void __fastcall TMainForm::Label10Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[8].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=25&t=17640", NULL, NULL, SW_SHOWNORMAL);
 }
 
 //---------------------------------------------------------------------------
@@ -2182,7 +2159,7 @@ void __fastcall TMainForm::Label14MouseLeave(TObject *Sender)
 
 void __fastcall TMainForm::Label14Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[7].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewforum.php?f=11" , NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2197,12 +2174,6 @@ void __fastcall TMainForm::Label16MouseMove(TObject *Sender, TShiftState Shift, 
 void __fastcall TMainForm::Label16MouseLeave(TObject *Sender)
 {
 	Label16->Font->Style = TFontStyles() >> fsUnderline;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Label16Click(TObject *Sender)
-{
-	ShellExecute(Handle, NULL, LinkLocale[2].c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2340,9 +2311,6 @@ void TMainForm::ObjectProv(String PodFolder, String Folder, String SSC, TCheckBo
 		Check->Enabled=false;
 
 		//Добавляем ссылки на скачивание
-		if(Check==CheckBox10) //Достопримечательности Марса
-			Label16->Visible=true;
-
 		if(Check==CheckBox17) //Пояс Койпера
 			Label13->Visible=true;
 
@@ -2494,7 +2462,6 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 		//Объекты и время
 		CheckBox1->State=Settings->ReadBool("ObjectsTime","SunFlares",0);
 		CheckBox2->State=Settings->ReadBool("ObjectsTime","JupiterRings",0);
-		CheckBox10->State=Settings->ReadBool("ObjectsTime","MarsSurfaceFeatures",0);
 		CheckBox17->State=Settings->ReadBool("ObjectsTime","KuiperBelt",0);
 		CheckBox18->State=Settings->ReadBool("ObjectsTime","JupiterClouds",0);
 		CheckBox19->State=Settings->ReadBool("ObjectsTime","IoVolcanoes",0);
@@ -2579,7 +2546,7 @@ void __fastcall TMainForm::Label32MouseLeave(TObject *Sender)
 
 void __fastcall TMainForm::Label32Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[1].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/download.html", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2613,7 +2580,6 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 		//Объекты и время
 		Settings->WriteBool("ObjectsTime","SunFlares",CheckBox1->State);
 		Settings->WriteBool("ObjectsTime","JupiterRings",CheckBox2->State);
-		Settings->WriteBool("ObjectsTime","MarsSurfaceFeatures",CheckBox10->State);
 		Settings->WriteBool("ObjectsTime","KuiperBelt",CheckBox17->State);
 		Settings->WriteBool("ObjectsTime","JupiterClouds",CheckBox18->State);
 		Settings->WriteBool("ObjectsTime","IoVolcanoes",CheckBox19->State);
@@ -2695,7 +2661,7 @@ void __fastcall TMainForm::Label8MouseMove(TObject *Sender, TShiftState Shift, i
 
 void __fastcall TMainForm::Label8Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[6].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=23&t=17402", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2714,7 +2680,7 @@ void __fastcall TMainForm::Label13MouseMove(TObject *Sender, TShiftState Shift, 
 
 void __fastcall TMainForm::Label13Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[3].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=23&t=17404".c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2785,7 +2751,7 @@ void __fastcall TMainForm::Label15MouseMove(TObject *Sender, TShiftState Shift, 
 
 void __fastcall TMainForm::Label15Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[5].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=173", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2804,7 +2770,7 @@ void __fastcall TMainForm::Label33MouseMove(TObject *Sender, TShiftState Shift, 
 
 void __fastcall TMainForm::Label33Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, LinkLocale[4].c_str(), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=23&t=17405", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
@@ -2864,3 +2830,4 @@ void __fastcall TMainForm::HlpClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+

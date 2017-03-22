@@ -74,11 +74,9 @@ __published:	// IDE-managed Components
         TLabel *Label3;
         TLabel *Label4;
         TLabel *Label10;
-        TCheckBox *CheckBox10;
         TLabel *Label11;
         TLabel *Label12;
         TLabel *Label14;
-        TLabel *Label16;
         TLabel *Label19;
         TEdit *Edit5;
         TGroupBox *GroupBox7;
@@ -215,7 +213,6 @@ __published:	// IDE-managed Components
         void __fastcall Label14MouseLeave(TObject *Sender);
         void __fastcall Label14Click(TObject *Sender);
 		void __fastcall Label16MouseLeave(TObject *Sender);
-		void __fastcall Label16Click(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Edit5Change(TObject *Sender);
         void __fastcall Edit5Click(TObject *Sender);
