@@ -723,9 +723,9 @@ object MainForm: TMainForm
           OnMouseLeave = Label33MouseLeave
         end
         object CheckBox1: TCheckBox
-          Left = 8
+          Left = 10
           Top = 24
-          Width = 217
+          Width = 215
           Height = 17
           BiDiMode = bdLeftToRight
           Caption = #1057#1086#1083#1085#1077#1095#1085#1099#1077' '#1074#1089#1087#1099#1096#1082#1080
@@ -733,9 +733,9 @@ object MainForm: TMainForm
           TabOrder = 0
         end
         object CheckBox2: TCheckBox
-          Left = 8
+          Left = 10
           Top = 48
-          Width = 217
+          Width = 215
           Height = 17
           Caption = #1050#1086#1083#1100#1094#1072' '#1070#1087#1080#1090#1077#1088#1072
           TabOrder = 1
@@ -1157,9 +1157,9 @@ object MainForm: TMainForm
           end
         end
         object CheckBox17: TCheckBox
-          Left = 8
+          Left = 10
           Top = 71
-          Width = 130
+          Width = 128
           Height = 17
           Caption = #1055#1086#1103#1089' '#1050#1086#1081#1087#1077#1088#1072
           TabOrder = 3
@@ -1167,7 +1167,7 @@ object MainForm: TMainForm
         object CheckBox18: TCheckBox
           Left = 10
           Top = 94
-          Width = 209
+          Width = 202
           Height = 17
           Caption = #1044#1080#1085#1072#1084#1080#1095#1077#1089#1082#1091#1102' '#1072#1090#1084#1086#1089#1092#1077#1088#1091' '#1070#1087#1080#1090#1077#1088#1072
           TabOrder = 4

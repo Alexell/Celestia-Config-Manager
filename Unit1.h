@@ -212,7 +212,6 @@ __published:	// IDE-managed Components
         void __fastcall Label10Click(TObject *Sender);
         void __fastcall Label14MouseLeave(TObject *Sender);
         void __fastcall Label14Click(TObject *Sender);
-		void __fastcall Label16MouseLeave(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Edit5Change(TObject *Sender);
         void __fastcall Edit5Click(TObject *Sender);
@@ -231,7 +230,6 @@ __published:	// IDE-managed Components
 	void __fastcall Label32MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label32MouseLeave(TObject *Sender);
 	void __fastcall Label32Click(TObject *Sender);
-	void __fastcall Label16MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label14MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall LabelLink2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label10MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
@@ -242,14 +240,6 @@ __published:	// IDE-managed Components
 	void __fastcall Label13MouseLeave(TObject *Sender);
 	void __fastcall Label13MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label13Click(TObject *Sender);
-	void __fastcall Link1MouseLeave(TObject *Sender);
-	void __fastcall Link1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall Link2MouseLeave(TObject *Sender);
-	void __fastcall Link2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall Link3MouseLeave(TObject *Sender);
-	void __fastcall Link3MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall Link4MouseLeave(TObject *Sender);
-	void __fastcall Link4MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label15MouseLeave(TObject *Sender);
 	void __fastcall Label15MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label15Click(TObject *Sender);

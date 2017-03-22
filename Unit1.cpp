@@ -17,13 +17,10 @@ TMemIniFile* Lang;
 bool startfolder,AutoSave;
 String S[7], sl;
 String LuaAdr;
-String Link[4];
 String CelestiaVersion;
 String Language,LanguageFile;
-String LinkLocale[15];
 String StringsLocale[15];
 String MessegesLocale[15];
-
 String CurNum="0"; //Увеличивать при каждом обновлении
 
 TMainForm *MainForm;
@@ -99,7 +96,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CheckBox20->Caption=Lang->ReadString("ObjectsTime","CheckBox20","Space lift");
 	Label8->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox61->Caption=Lang->ReadString("ObjectsTime","CheckBox61","Oort Cloud");
-	Label16->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox62->Caption=Lang->ReadString("ObjectsTime","CheckBox62","Highlight the particles of Saturn rings (only Celestia EP v3.0)");
 
 	//Космические аппараты
@@ -199,7 +195,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	LabelCelestia->Caption=Lang->ReadString("About","LabelCelestia","Celestia in Russia")+":";
 	Label4->Caption=Lang->ReadString("About","Label4","Discussion")+":";
 	Label10->Caption=Lang->ReadString("About","Label10","on shatters.net/forum");
-	GroupBox12->Caption=Lang->ReadString("About","GroupBox12","Recommended downloads")+":";
 
 	//Оставшиеся строки
 	StringsLocale[1]=Lang->ReadString("Strings","Unknown","unknown");
@@ -354,17 +349,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		}
 		catch(...){}
 		delete TMP;
-
-		Links = new TIniFile(ExtractFilePath(Application->ExeName)+"manager\\"+"links.ini");
-		Link1->Caption=Links->ReadString("Link1","Caption",StringsLocale[4]);
-		Link2->Caption=Links->ReadString("Link2","Caption",StringsLocale[4]);
-		Link3->Caption=Links->ReadString("Link3","Caption",StringsLocale[4]);
-		Link4->Caption=Links->ReadString("Link4","Caption",StringsLocale[4]);
-		Link[1]=Links->ReadString("Link1","URL",StringsLocale[4]);
-		Link[2]=Links->ReadString("Link2","URL",StringsLocale[4]);
-		Link[3]=Links->ReadString("Link3","URL",StringsLocale[4]);
-		Link[4]=Links->ReadString("Link4","URL",StringsLocale[4]);
-		delete Links;
 
 		//ПРОВЕРКА ВКЛАДКИ "ОСНОВНЫЕ"
 		TStringList *MainProv=new TStringList;
@@ -2163,20 +2147,6 @@ void __fastcall TMainForm::Label14Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Label16MouseMove(TObject *Sender, TShiftState Shift, int X,
-		  int Y)
-{
-	Label16->Font->Style = TFontStyles() << fsUnderline;
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TMainForm::Label16MouseLeave(TObject *Sender)
-{
-	Label16->Font->Style = TFontStyles() >> fsUnderline;
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMainForm::Button1Click(TObject *Sender)
 {
 	if (SelectDirectory(StringsLocale[8].c_str(), "", S[4]))
@@ -2680,59 +2650,7 @@ void __fastcall TMainForm::Label13MouseMove(TObject *Sender, TShiftState Shift, 
 
 void __fastcall TMainForm::Label13Click(TObject *Sender)
 {
-	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=23&t=17404".c_str(), NULL, NULL, SW_SHOWNORMAL);
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link1MouseLeave(TObject *Sender)
-{
-	Link1->Font->Style = TFontStyles() >> fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link1MouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y)
-{
-	Link1->Font->Style = TFontStyles() << fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link2MouseLeave(TObject *Sender)
-{
-	Link2->Font->Style = TFontStyles() >> fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link2MouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y)
-{
-	Link2->Font->Style = TFontStyles() << fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link3MouseLeave(TObject *Sender)
-{
-	Link3->Font->Style = TFontStyles() >> fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link3MouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y)
-{
-	Link3->Font->Style = TFontStyles() << fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link4MouseLeave(TObject *Sender)
-{
-	Link4->Font->Style = TFontStyles() >> fsUnderline << fsBold;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::Link4MouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y)
-{
-	Link4->Font->Style = TFontStyles() << fsUnderline << fsBold;
+	ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?f=23&t=17404", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 
