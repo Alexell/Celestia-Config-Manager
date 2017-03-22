@@ -18,7 +18,7 @@ String LuaAdr;
 String Language,LanguageFile;
 String StringsLocale[15];
 String MessagesLocale[15];
-String CurNum="0"; //Увеличивать при каждом обновлении
+String CurNum="12"; //Номер обновления
 
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
@@ -88,7 +88,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CheckBox20->Caption=Lang->ReadString("ObjectsTime","CheckBox20","Space lift");
 	Label8->Caption=Lang->ReadString("Strings","Download","Download");
 	CheckBox61->Caption=Lang->ReadString("ObjectsTime","CheckBox61","Oort Cloud");
-	CheckBox62->Caption=Lang->ReadString("ObjectsTime","CheckBox62","Highlight the particles of Saturn rings (only Celestia EP v3.0)");
+	CheckBox62->Caption=Lang->ReadString("ObjectsTime","CheckBox62","Highlight the particles of Saturn rings");
 
 	//Космические аппараты
 	GroupBox5->Caption=Lang->ReadString("ObjectsTime","GroupBox5","Spacecrafts, which doesn't exists anymore");
@@ -185,7 +185,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Label7->Caption=Lang->ReadString("About","Label7","Configuration manager was developed for Celestia 1.6.1 and Celestia Educational. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 and Lua Universal Tools.");
 	Label3->Caption=Lang->ReadString("About","Label3","Thanks to: Sergey Leonov (Leserg) for testing of the first version and useful tips; Artyom Volgin (Zemlyanin) for ideas on functionality and testing of all versions.");
 	Label4->Caption=Lang->ReadString("About","Label4","Discussion")+":";
-	Label10->Caption=Lang->ReadString("About","Label10","on celestiaproject.net/forum");
+	Label10->Caption=Lang->ReadString("About","Label10","celestiaproject.net/forum");
 
 	//Оставшиеся строки
 	StringsLocale[1]=Lang->ReadString("Strings","Unknown","unknown");
@@ -198,7 +198,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	StringsLocale[8]=Lang->ReadString("Strings","ScreenDir","Choose folder to save screenshots")+":";
 	StringsLocale[9]=Lang->ReadString("Strings","AltAzimuthOn","Alt-azimuth mode enabled");
 	StringsLocale[10]=Lang->ReadString("Strings","AltAzimuthOff","Alt-azimuth mode disabled");
-	StringsLocale[11]=Lang->ReadString("Strings","NoLocalizedHelp","Help file in your language not found. Open Help in English?");
 
 	//Сообщения
 	MessagesLocale[1]=Lang->ReadString("Messages","Message1","To run the utility, place it in the root directory of Celestia.");
@@ -211,7 +210,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	MessagesLocale[8]=Lang->ReadString("Messages","Message8","Default settings were restored successfully!");
 	MessagesLocale[9]=Lang->ReadString("Messages","Message9","Settings were imported successfully!");
 	MessagesLocale[10]=Lang->ReadString("Messages","Message10","Settings were successfully exported to a file");
-	MessagesLocale[11]=Lang->ReadString("Messages","Message11","Available Update Celestia Config Manager. Upgrade?");
+	MessagesLocale[11]=Lang->ReadString("Messages","Message11","Available Update for Celestia Config Manager. Open download page in your browser?");
 
 	//ПРОВЕРКА ОБНОВЛЕНИЙ ПРОГРАММЫ
 	String NetNum;
@@ -223,7 +222,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 		{
 				if (Application->MessageBox(MessagesLocale[11].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
 				{
-					ShellExecute(Handle, NULL, L"Manager_Updater.exe", NULL, NULL, SW_SHOWNORMAL);
+					ShellExecute(Handle, NULL, L"https://celestiaproject.net/forum/viewtopic.php?p=135983#p135983", NULL, NULL, SW_SHOWNORMAL);
 					Application->Terminate();
 				}
 		}
@@ -668,6 +667,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			Label11->Visible=true;
 			Label12->Visible=true;
 			Label14->Visible=true;
+			CheckBox63->Enabled=false;
 			return;
 		}
 		TStringList *Lua=new TStringList;

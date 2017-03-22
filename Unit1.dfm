@@ -61,7 +61,7 @@ object MainForm: TMainForm
     Top = 24
     Width = 792
     Height = 542
-    ActivePage = LuaTab
+    ActivePage = MainTab
     Align = alBottom
     MultiLine = True
     ParentShowHint = False
@@ -1162,9 +1162,9 @@ object MainForm: TMainForm
         object CheckBox62: TCheckBox
           Left = 10
           Top = 186
-          Width = 362
+          Width = 215
           Height = 17
-          Caption = #1055#1086#1076#1089#1074#1077#1095#1080#1074#1072#1090#1100' '#1095#1072#1089#1090#1080#1094#1099' '#1082#1086#1083#1077#1094' '#1057#1072#1090#1091#1088#1085#1072' ('#1090#1086#1083#1100#1082#1086' '#1074' Celestia EP v3.0)'
+          Caption = #1055#1086#1076#1089#1074#1077#1095#1080#1074#1072#1090#1100' '#1095#1072#1089#1090#1080#1094#1099' '#1082#1086#1083#1077#1094' '#1057#1072#1090#1091#1088#1085#1072
           Enabled = False
           TabOrder = 8
         end
@@ -1518,10 +1518,10 @@ object MainForm: TMainForm
       object LabelLink2: TLabel
         Left = 162
         Top = 127
-        Width = 36
+        Width = 90
         Height = 13
         Cursor = crHandPoint
-        Caption = #1089#1089#1099#1083#1082#1072
+        Caption = 'celestiaproject.net'
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -1609,15 +1609,17 @@ object MainForm: TMainForm
   end
   object ImportDialog: TOpenDialog
     Filter = #1060#1072#1081#1083#1099' '#1082#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1080'|*.cfg'
-    Left = 688
+    Left = 696
   end
   object ExportDialog: TSaveDialog
     FileName = 'settings.cfg'
     Filter = #1060#1072#1081#1083#1099' '#1082#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1080'|*.cfg'
-    Left = 624
+    Left = 752
   end
   object Web: TIdHTTP
+    IOHandler = IdSSLIOHandler
     AllowCookies = True
+    HandleRedirects = True
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
     Request.ContentLength = -1
@@ -1631,5 +1633,14 @@ object MainForm: TMainForm
     Request.Ranges = <>
     HTTPOptions = [hoForceEncodeParams]
     Left = 568
+  end
+  object IdSSLIOHandler: TIdSSLIOHandlerSocketOpenSSL
+    MaxLineAction = maException
+    Port = 0
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 624
   end
 end

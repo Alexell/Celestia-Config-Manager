@@ -36,7 +36,7 @@ CheckBox18=Dynamische Wolken des Jupiter
 CheckBox19=Io 3D (Kryo-)Vulkane
 CheckBox20=Space-Lift
 CheckBox61=Oort'sche Wolke
-CheckBox62=Partikel der Saturnringe hervorheben (nur Celestia EP v3.0)
+CheckBox62=Partikel der Saturnringe hervorheben
 GroupBox5=Raumfahrzeuge, die nicht mehr existieren
 Page1=Seite 1
 Page2=Seite 2
@@ -119,7 +119,7 @@ BitBtn4=Wiederherstellung durchführen
 
 [About]
 AboutTab=Über
-Label7=Dieser Konfigurationsmanager wurde entwickelt für Celestia 1.6.1 und Celestia Educational. Er wurde erstellt, um die Konfiguration von Celestia zu vereinfachen und Add-Ons zu verwalten. Er unterstützt die meisten Raumfahrzeuge und die folgenden Lua-Tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 und Lua Universal Tools.
+Label7=Dieser Konfigurationsmanager wurde entwickelt für Celestia und Celestia Educational. Er wurde erstellt, um die Konfiguration von Celestia zu vereinfachen und Add-Ons zu verwalten. Er unterstützt die meisten Raumfahrzeuge und die folgenden Lua-Tools: Lua Edu Tools v1.2 beta 8-9 und Lua Universal Tools.
 Label3=Dank an: Sergey Leonov (Leserg) für das Testen der ersten Version und hilfeiche Tipps; Artyom Volgin (Zemlyanin) für Ideen zur Funktionalität und das Testen sämtlicher Versionen; Ulrich Dickmann a.k.a Adirondack für die deutsche Übersetzung.
 Label4=Diskussionsforum
 Label10=celestiaproject.net/forum
@@ -150,7 +150,6 @@ ExtrasDir=Wählen Sie das Verzeichnis mit den Add-Ons
 ScreenDir=Wählen Sie das Verzeichnis zum Speichern der Screenshots
 AltAzimuthOn=Alt-Azimuth-Modus eingeschaltet
 AltAzimuthOff=Alt-Azimuth-Modus ausgeschaltet
-NoLocalizedHelp=Hilfedatei in Ihrer Sprache nicht gefunden. Englische Hilfedatei öffnen?
 
 [Messages]
 Message1=Dieses Werkzeug funktioniert nur im Hauptverzeichnis von Celestia.
@@ -163,4 +162,4 @@ Message7=Wollen Sie wirklich die Standardeinstellung wiederherstellen?
 Message8=Standardeinstellungen erfolgreich wiederhergestellt!
 Message9=Die Einstellungen wurden erfolgreich importiert!
 Message10=Die Einstellungen wurden erfolgreich in eine Datei exportiert!
-Message11=Update verfügbar: Celestia Config Manager. Updaten?
+Message11=Update verfügbar: Celestia Config Manager. Öffnen Sie die Download-Seite in Ihrem Browser?

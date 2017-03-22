@@ -14,7 +14,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->Title = "Менеджер конфигурации Celestia";
+		Application->Title = "CelestiaConfig Manager";
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->Run();
 	}

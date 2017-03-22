@@ -144,12 +144,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PostBuildEvent><![CDATA[xcopy /r /y /e "$(PROJECTDIR)\language" "$(OUTPUTDIR)\manager\language"
 $(PostBuildEvent)]]></PostBuildEvent>
         <Defines>NDEBUG;$(Defines)</Defines>
-        <VerInfo_Release>4</VerInfo_Release>
-        <VerInfo_MinorVer>1</VerInfo_MinorVer>
+        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_MinorVer>2</VerInfo_MinorVer>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=© Alexell;FileDescription=;FileVersion=1.1.4.558;InternalName=Celestia Config Manager;LegalCopyright=© Alexell;LegalTrademarks=;OriginalFilename=Celestia_Config_Manager.exe;ProductName=Celestia Config Manager;ProductVersion=1.1.4;Comments=</VerInfo_Keys>
-        <VerInfo_Build>558</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=© Alexell;FileDescription=;FileVersion=1.2.0.580;InternalName=Celestia Config Manager;LegalCopyright=© Alexell Production;LegalTrademarks=;OriginalFilename=Celestia_Config_Manager.exe;ProductName=Celestia Config Manager;ProductVersion=1.2;Comments=</VerInfo_Keys>
+        <VerInfo_Build>580</VerInfo_Build>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <LinkPackageStatics>rtl.lib;vcl.lib;vclimg.lib;vclx.lib;IndySystem.lib;IndyProtocols.lib;IndyCore.lib</LinkPackageStatics>
         <DynamicRTL>false</DynamicRTL>
@@ -655,13 +655,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

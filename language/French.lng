@@ -36,7 +36,7 @@ CheckBox18=Nuages dynamiques pour Jupiter
 CheckBox19=Volcans de Io 3D
 CheckBox20=Ascenceur spatial
 CheckBox61=Nuage d'Oort
-CheckBox62=Haute visibilité des anneaux de Saturne (seulement Celestia EP v3.0)
+CheckBox62=Haute visibilité des anneaux de Saturne
 GroupBox5=Astronefs qui ne sont plus en fonction
 Page1=Page 1
 Page2=Page 2
@@ -119,7 +119,7 @@ BitBtn4=Effectuer la récupération
 
 [About]
 AboutTab=Au sujet
-Label7=Configuration manager a été développé pour Celestia 1.6.1 et Celestia Educational. Il est conçu pour rendre la configuration de Celestia précise et pour gérer ses addons. Il supporte la plupart des astronefs et intègre les outils: Lua Edu Tools v1.2 beta 8, v1.2 beta 9, Lua Universal Tools.
+Label7=Configuration manager a été développé pour Celestia et Celestia Educational. Il est conçu pour rendre la configuration de Celestia précise et pour gérer ses addons. Il supporte la plupart des astronefs et intègre les outils: Lua Edu Tools v1.2 beta 8-9, Lua Universal Tools.
 Label3=Merci à: Sergey Leonov alias Leserg pour les tests de la première version et ses précieux conseils; Artyom Volgin alias Zemlyanin pour ses idées sur la fonctionnalité et les tests sur toutes les versions.
 Label4=Forum de discussions sur
 Label10=celestiaproject.net/forum
@@ -150,7 +150,6 @@ ExtrasDir=Choisir le dossier avec les addons pour Celestia
 ScreenDir=Choisir le dossier pour les copies d'écran
 AltAzimuthOn=Alt-azimuth mode activé
 AltAzimuthOff=Alt-azimuth mode désactivé
-NoLocalizedHelp=Fichier d'aide dans votre langue introuvable. Ouvrir l'aide en anglais?
 
 [Messages]
 Message1=Pour exécuter l'utilitaire, placez-le dans le répertoire racine de Celestia.
@@ -163,7 +162,7 @@ Message7=Voulez-vous vraiment restaurer les paramètres par défaut?
 Message8=Les paramètres par défaut ont été restaurés avec succès!
 Message9=Les paramètres ont été importés avec succès!
 Message10=Les paramètres ont été exportés vers le fichier
-Message11=Disponible Mise à jour disponible pour Celestia Config Manager. Mettre à jour?
+Message11=Disponible Mise à jour disponible pour Celestia Config Manager. Ouvrez la page de téléchargement dans votre navigateur?
 
 [Links]
 Link1=http://www.celestiaproject.ru/?cat=7

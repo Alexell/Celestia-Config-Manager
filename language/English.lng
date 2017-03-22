@@ -36,7 +36,7 @@ CheckBox18=Dynamic clouds of Jupiter
 CheckBox19=Io 3D volcanoes
 CheckBox20=Space lift
 CheckBox61=Oort Cloud
-CheckBox62=Highlight the particles of Saturn rings (only Celestia EP v3.0)
+CheckBox62=Highlight the particles of Saturn rings
 GroupBox5=Spacecrafts, which doesn't exists anymore
 Page1=Page 1
 Page2=Page 2
@@ -119,10 +119,10 @@ BitBtn4=Perform recovery
 
 [About]
 AboutTab=About
-Label7=Configuration manager was developed for Celestia 1.6.1 and Celestia Educational. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 and Lua Universal Tools.
+Label7=Configuration manager was developed for Celestia and Celestia Educational. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8-9 and Lua Universal Tools.
 Label3=Thanks to: Sergey Leonov (Leserg) for testing of the first version and useful tips; Artyom Volgin (Zemlyanin) for ideas on functionality and testing of all versions.
 Label4=Discussion
-Label10=on celestiaproject.net/forum
+Label10=celestiaproject.net/forum
 
 [Strings]
 AppName=Celestia Config Manager
@@ -150,7 +150,6 @@ ExtrasDir=Choose folder with the addons for Celestia
 ScreenDir=Choose folder to save screenshots
 AltAzimuthOn=Alt-azimuth mode enabled
 AltAzimuthOff=Alt-azimuth mode disabled
-NoLocalizedHelp=Help file in your language not found. Open Help in English?
 
 [Messages]
 Message1=To run the utility, place it in the root directory of Celestia.
@@ -163,4 +162,4 @@ Message7=Do you really want to restore default settings?
 Message8=Default settings were restored successfully!
 Message9=Settings were imported successfully!
 Message10=Settings were successfully exported to a file
-Message11=Available Update Celestia Config Manager. Upgrade?
+Message11=Available Update for Celestia Config Manager. Open download page in your browser?

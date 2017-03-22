@@ -20,6 +20,11 @@
 #include <IdTCPConnection.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
 #include <Vcl.Menus.hpp>
+#include <IdIOHandler.hpp>
+#include <IdIOHandlerSocket.hpp>
+#include <IdIOHandlerStack.hpp>
+#include <IdSSL.hpp>
+#include <IdSSLOpenSSL.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -179,6 +184,7 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox62;
 	TGroupBox *GroupBox13;
 	TCheckBox *CheckBox63;
+	TIdSSLIOHandlerSocketOpenSSL *IdSSLIOHandler;
         void __fastcall LabelLink2Click(TObject *Sender);
         void __fastcall LabelLink2MouseLeave(TObject *Sender);
         void __fastcall BitBtn1Click(TObject *Sender);
