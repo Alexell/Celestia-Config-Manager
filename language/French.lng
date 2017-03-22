@@ -24,10 +24,6 @@ Label24=Vitesse de rotation de l'objet observé, quand vous vous servez des flè
 Label26=Note: Etant proche de la surface de la planète, ce paramètre affecte la vitesse de rotation en mode 'Planétarium'.
 Label25=Sensibilité de rotation avec la souris:
 Label27=Note: La valeur 0.0 désactive cette fonction.
-GroupBox6=Musique accessoire dans Celestia EP v2.0
-CheckBox21=Activée
-PlayerEdit=Path de votrer media player (requis):
-Help=Aide
 
 [ObjectsTime]
 ObjectTab=Objets et temps
@@ -123,17 +119,14 @@ BitBtn4=Effectuer la récupération
 
 [About]
 AboutTab=Au sujet
-Label7=Configuration manager a été développé pour Celestia 1.6.1, Celestia Educational et Celestia Extended Pack. Il est conçu pour rendre la configuration de Celestia précise et pour gérer ses addons. Il supporte la plupart des astronefs et intègre les outils: Lua Edu Tools v1.2 beta 8, v1.2 beta 9, Lua Universal Tools v1.0, v2.0.
+Label7=Configuration manager a été développé pour Celestia 1.6.1 et Celestia Educational. Il est conçu pour rendre la configuration de Celestia précise et pour gérer ses addons. Il supporte la plupart des astronefs et intègre les outils: Lua Edu Tools v1.2 beta 8, v1.2 beta 9, Lua Universal Tools.
 Label3=Merci à: Sergey Leonov alias Leserg pour les tests de la première version et ses précieux conseils; Artyom Volgin alias Zemlyanin pour ses idées sur la fonctionnalité et les tests sur toutes les versions.
-LabelCelestia=Celestia en Russie
 Label4=Forum de discussions sur
-Label10=shatters.net/forum
-GroupBox12=Téléchargements recommandés
+Label10=celestiaproject.net/forum
 
 [Strings]
 AppName=Celestia Config Manager
 EIDialogFilter=Fichiers de configuration
-PlayerDialogFilter=Fichiers executables
 SaveButton=Enregistrer
 Download=Ouvrir
 ComboBox1Item1=Demander

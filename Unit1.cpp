@@ -10,17 +10,14 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TIniFile* EP;
 TIniFile* Settings;
-TIniFile* Links;
 TMemIniFile* Lang;
 bool startfolder,AutoSave;
 String S[7], sl;
 String LuaAdr;
-String CelestiaVersion;
 String Language,LanguageFile;
 String StringsLocale[15];
-String MessegesLocale[15];
+String MessagesLocale[15];
 String CurNum="0"; //Увеличивать при каждом обновлении
 
 TMainForm *MainForm;
@@ -49,7 +46,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Label32->Caption=Lang->ReadString("Main","Label32","Download new version");
 	ExportDialog->Filter=Lang->ReadString("Strings","EIDialogFilter","Configuration files")+"|*.cfg";
 	ImportDialog->Filter=Lang->ReadString("Strings","EIDialogFilter","Configuration files")+"|*.cfg";
-	PlayerDialog->Filter=Lang->ReadString("Strings","PlayerDialogFilter","Executable files")+"|*.exe";
 	MainTab->Caption=Lang->ReadString("Main","MainTab","Main");
 	GroupBox1->Caption=Lang->ReadString("Main","GroupBox1","Extras directories");
 	LabelDir1->Caption=Lang->ReadString("Main","LabelDir1","Standard addons directory (default)");
@@ -76,10 +72,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	Label26->Caption=Lang->ReadString("Main","Label26","Note: This parameter affects the camera rotation speed in 'Planetarium' mode, being near planet surface.");
 	Label25->Caption=Lang->ReadString("Main","Label25","Mouse rotation sensitivity:");
 	Label27->Caption=Lang->ReadString("Main","Label27","Note: The value 0.0 disables this function.");
-	GroupBox6->Caption=Lang->ReadString("Main","GroupBox6","Incidental music Celestia EP v2.0");
-	CheckBox21->Caption=Lang->ReadString("Main","CheckBox21","Enabled");
-	PlayerEdit->EditLabel->Caption=Lang->ReadString("Main","PlayerEdit","Path to your media player (required):");
-	Hlp->Caption=Lang->ReadString("Main","Help","Help");
 	BitBtn1->Caption=Lang->ReadString("Strings","SaveButton","Save");
 
 	//Вкладка "Объекты и время"
@@ -190,11 +182,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	//Вкладка "О программе"
 	AboutTab->Caption=Lang->ReadString("About","AboutTab","About");
-	Label7->Caption=Lang->ReadString("About","Label7","Configuration manager was developed for Celestia 1.6.1, Celestia Educational and Celestia Extended Pack. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9, Lua Universal Tools v1.0 and Lua Universal Tools v2.0.");
-	Label3->Caption=Lang->ReadString("About","Label3","Thanks to: Sergey Leonov a.k.a Leserg for testing of the first version and useful tips; Artyom Volgin a.k.a Zemlyanin for ideas on functionality and testing of all versions.");
-	LabelCelestia->Caption=Lang->ReadString("About","LabelCelestia","Celestia in Russia")+":";
+	Label7->Caption=Lang->ReadString("About","Label7","Configuration manager was developed for Celestia 1.6.1 and Celestia Educational. It's designed to make Celestia configuration precise, and for managing its addons. It supports most of the spacecrafts, and following Lua-tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 and Lua Universal Tools.");
+	Label3->Caption=Lang->ReadString("About","Label3","Thanks to: Sergey Leonov (Leserg) for testing of the first version and useful tips; Artyom Volgin (Zemlyanin) for ideas on functionality and testing of all versions.");
 	Label4->Caption=Lang->ReadString("About","Label4","Discussion")+":";
-	Label10->Caption=Lang->ReadString("About","Label10","on shatters.net/forum");
+	Label10->Caption=Lang->ReadString("About","Label10","on celestiaproject.net/forum");
 
 	//Оставшиеся строки
 	StringsLocale[1]=Lang->ReadString("Strings","Unknown","unknown");
@@ -210,27 +201,27 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	StringsLocale[11]=Lang->ReadString("Strings","NoLocalizedHelp","Help file in your language not found. Open Help in English?");
 
 	//Сообщения
-	MessegesLocale[1]=Lang->ReadString("Messages","Message1","To run the utility, place it in the root directory of Celestia.");
-	MessegesLocale[2]=Lang->ReadString("Messages","Message2","Invalid value!");
-	MessegesLocale[3]=Lang->ReadString("Messages","Message3","Invalid addons folder! The first field must be specified.");
-	MessegesLocale[4]=Lang->ReadString("Messages","Message4","The 'Init script' must be specified!");
-	MessegesLocale[5]=Lang->ReadString("Messages","Message5","The 'Demo script' must be specified!");
-	MessegesLocale[6]=Lang->ReadString("Messages","Message6","Settings were saved successfully!");
-	MessegesLocale[7]=Lang->ReadString("Messages","Message7","Do you really want to restore default settings?");
-	MessegesLocale[8]=Lang->ReadString("Messages","Message8","Default settings were restored successfully!");
-	MessegesLocale[9]=Lang->ReadString("Messages","Message9","Settings were imported successfully!");
-	MessegesLocale[10]=Lang->ReadString("Messages","Message10","Settings were successfully exported to a file");
-	MessegesLocale[11]=Lang->ReadString("Messages","Message11","Available Update Celestia Config Manager. Upgrade?");
+	MessagesLocale[1]=Lang->ReadString("Messages","Message1","To run the utility, place it in the root directory of Celestia.");
+	MessagesLocale[2]=Lang->ReadString("Messages","Message2","Invalid value!");
+	MessagesLocale[3]=Lang->ReadString("Messages","Message3","Invalid addons folder! The first field must be specified.");
+	MessagesLocale[4]=Lang->ReadString("Messages","Message4","The 'Init script' must be specified!");
+	MessagesLocale[5]=Lang->ReadString("Messages","Message5","The 'Demo script' must be specified!");
+	MessagesLocale[6]=Lang->ReadString("Messages","Message6","Settings were saved successfully!");
+	MessagesLocale[7]=Lang->ReadString("Messages","Message7","Do you really want to restore default settings?");
+	MessagesLocale[8]=Lang->ReadString("Messages","Message8","Default settings were restored successfully!");
+	MessagesLocale[9]=Lang->ReadString("Messages","Message9","Settings were imported successfully!");
+	MessagesLocale[10]=Lang->ReadString("Messages","Message10","Settings were successfully exported to a file");
+	MessagesLocale[11]=Lang->ReadString("Messages","Message11","Available Update Celestia Config Manager. Upgrade?");
 
 	//ПРОВЕРКА ОБНОВЛЕНИЙ ПРОГРАММЫ
 	String NetNum;
 	try
 	{
 		//Получаем номер обновлений и сравниваем
-		NetNum=Web->Get("http://files.celestiaproject.ru/config_manager/update/update.ini");
+		NetNum=Web->Get("https://celestiaproject.net/files/manager/update.ini");
 		if (StrToInt(NetNum)>StrToInt(CurNum))
 		{
-				if (Application->MessageBox(MessegesLocale[11].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
+				if (Application->MessageBox(MessagesLocale[11].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
 				{
 					ShellExecute(Handle, NULL, L"Manager_Updater.exe", NULL, NULL, SW_SHOWNORMAL);
 					Application->Terminate();
@@ -240,7 +231,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	catch(...){}
 
 	//ПРОВЕРКА РАСПОЛОЖЕНИЯ ПРОГРАММЫ
-	if (FileExists(ExtractFilePath(Application->ExeName)+"celestia.cfg") && FileExists(ExtractFilePath(Application->ExeName)+"celestia.exe") || FileExists(ExtractFilePath(Application->ExeName)+"celestia161-ED.exe")  || FileExists(ExtractFilePath(Application->ExeName)+"Celestia EP.exe"))
+	if (FileExists(ExtractFilePath(Application->ExeName)+"celestia.cfg") && FileExists(ExtractFilePath(Application->ExeName)+"celestia.exe") || FileExists(ExtractFilePath(Application->ExeName)+"celestia161-ED.exe"))
 	{
 		startfolder = true;
 		MkDir(ExtractFilePath(Application->ExeName)+ "temp");
@@ -249,7 +240,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	}
 	else
 	{
-		if (Application->MessageBox(MessegesLocale[1].c_str(), Application->Title.c_str(), MB_OK | MB_ICONEXCLAMATION)==MB_OK)
+		if (Application->MessageBox(MessagesLocale[1].c_str(), Application->Title.c_str(), MB_OK | MB_ICONEXCLAMATION)==MB_OK)
 		{
 			startfolder = false;
 		}
@@ -298,34 +289,12 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
 		//Считывание версии Celestia
 		if (FileExists(ExtractFilePath(Application->ExeName)+"celestia161-ED.exe"))
-			CelestiaVersion="Celestia 1.6.1 Educational";
-		else
-		{
-			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"Информация о Celestia EP v3.0.pdf"))
-			{
-				CelestiaVersion="Celestia Extended Pack v3.0";
-				CheckBox62->Enabled=true;
-			}
-
-			if (FileExists(ExtractFilePath(Application->ExeName)+"\\documents\\"+"Информация о Celestia EP v2.0.pdf"))
-			{
-				CelestiaVersion="Celestia Extended Pack v2.0";
-				GroupBox6->Visible=true;
-			}
-
-			if (FileExists(ExtractFilePath(Application->ExeName)+"Информация о Celestia EP v1.1.txt"))
-				CelestiaVersion="Celestia Extended Pack v1.1";
-
-			if (FileExists(ExtractFilePath(Application->ExeName)+"Информация о Celestia EP.txt"))
-				CelestiaVersion="Celestia Extended Pack v1.0";
-		}
-		if (CelestiaVersion!="")
-			Label19->Caption=Label19->Caption+CelestiaVersion;
+			Label19->Caption="Celestia 1.6.1 Educational";
 		else
 		{
 			//Проверка версии Celestia
 			Label19->Caption=Label19->Caption+"Celestia "+GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe");
-			if(GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe")!="1.6.1")
+			if(GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe") !="1.6.1" && GetVer(ExtractFilePath(Application->ExeName)+"celestia.exe")!="1.7.0")
 			{
 				Label19->Caption=Label19->Caption+StringsLocale[2];
 				Label32->Visible=true;
@@ -333,22 +302,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		}
 
 		//Авторская защита
-		LabelAbout->Caption="© Alexell\n"+StringsLocale[3]+": "+GetVer(Application->ExeName)+" (13.05.2014)";
-		LabelLink2->Caption="www.celestiaproject.ru";
-
-		//Блок ссылок "Рекомендуем скачать"
-		TStringList *TMP = new TStringList;
-		try
-		{
-			if(Language=="Russian")
-				TMP->Text=Web->Get("http://files.celestiaproject.ru/config_manager/links_ru.ini");
-			else
-				TMP->Text=Web->Get("http://files.celestiaproject.ru/config_manager/links_en.ini");
-
-			TMP->SaveToFile(ExtractFilePath(Application->ExeName)+"manager\\"+"links.ini");
-		}
-		catch(...){}
-		delete TMP;
+		LabelAbout->Caption="© Alexell Production\n"+StringsLocale[3]+": "+GetVer(Application->ExeName);
 
 		//ПРОВЕРКА ВКЛАДКИ "ОСНОВНЫЕ"
 		TStringList *MainProv=new TStringList;
@@ -546,18 +500,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		ScrollBar2->Position=pos;
 		FormatSettings.DecimalSeparator=',';
 
-		//Проверка музыкального проигрывателя для Celestia EP v2.0
-		if(GroupBox6->Visible==true)
-		{
-			EP = new TIniFile(ExtractFilePath(Application->ExeName)+"celestia_ep.ini");
-			if(EP->ReadString("Settings","Music","")=="true")
-				CheckBox21->Checked=true;
-			else
-				CheckBox21->Checked=false;
-
-			PlayerEdit->Text=EP->ReadString("Settings","Player","");
-			delete EP;
-		}
 		delete MainProv;
 		delete DirList;
 
@@ -566,240 +508,85 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		//ПРОВЕРКА ВКЛАДКИ "ОБЪЕКТЫ И ВРЕМЯ"
 
 		//Проверка Солнечных вспышек
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			ObjectProv("data\\solar-system\\sun\\","sun_flares","sun flares.ssc",CheckBox1);
-		else
-			ObjectProv("extras\\","sun_flares","sun flares.ssc",CheckBox1);
+		ObjectProv("extras\\","sun_flares","sun flares.ssc",CheckBox1);
 
 		//Проверка колец Юпитера
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-            ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
-		else
-			ObjectProv("extras\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
+		ObjectProv("extras\\","Jupiter Rings","Jupiter.ssc",CheckBox2);
 
 		//Проверка Пояса Койпера
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			ObjectProv("data\\solar-system\\","kuiper-belt","Kuiper_Belt.ssc",CheckBox17);
-		else
-            ObjectProv("extras\\","Kuiper_Belt","Kuiper_Belt.ssc",CheckBox17);
+		ObjectProv("extras\\","Kuiper_Belt","Kuiper_Belt.ssc",CheckBox17);
 
 		//Проверка Динамической атмосферы Юпитера
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-        	ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","JupClouds","JupClouds.ssc",CheckBox18);
-		else
-			ObjectProv("extras\\","Jupiter_Clouds","JupClouds.ssc",CheckBox18);
+		ObjectProv("extras\\","Jupiter_Clouds","JupClouds.ssc",CheckBox18);
 
 		//Проверка вулканов Ио
-		if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //недочет в самой сборке
-			ObjectProv("extras\\","iovolcanoes\\iovolcanoes","volcanoes.ssc",CheckBox19);
-		else
-		{
-			if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-            	ObjectProv("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","iovolcanoes","volcanoes.ssc",CheckBox19);
-			else
-				ObjectProv("extras\\","iovolcanoes","volcanoes.ssc",CheckBox19);
-		}
+		ObjectProv("extras\\","iovolcanoes","volcanoes.ssc",CheckBox19);
 
 		//Космический лифт
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			ObjectProv("data\\fiction-objects\\","space-lift","Space Lift.ssc",CheckBox20);
-		else
-			ObjectProv("extras\\","Space Lift","Space Lift.ssc",CheckBox20);
+		ObjectProv("extras\\","Space Lift","Space Lift.ssc",CheckBox20);
 
 		//Облако Оорта
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			ObjectProv("data\\solar-system\\","oort-cloud","OC.dsc",CheckBox61);
-		else
-			ObjectProv("extras\\","Oort_Cloud","OC.dsc",CheckBox61);
+		ObjectProv("extras\\","Oort_Cloud","OC.dsc",CheckBox61);
 
-		//Подсветка частиц колец Сатурна
-		HSatRingsProv("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
+		//Подсветка частиц колец Сатурна (сделать для Celestia)
+		//HSatRingsProv("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
 
 		//Проверка Ending у космических аппаратов
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "mir", "mir.ssc", CheckBox9);
-		else
-			EndingProv("extras-standard\\", "mir", "mir.ssc", CheckBox9);
+		EndingProv("extras-standard\\", "mir", "mir.ssc", CheckBox9);
 
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\jupiter-missions\\", "galileo", "galileo.ssc", CheckBox3);
-//		else
-//			EndingProv("extras-standard\\", "galileo", "galileo.ssc", CheckBox3);
+		EndingProv("extras\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
 
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\saturn-missions\\", "cassini", "cassini.ssc", CheckBox23);
-//		else
-//			EndingProv("extras\\", "Cassini-Huygens", "cassini_huygens.ssc", CheckBox23);
+		EndingProv("extras\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
-		else
-			EndingProv("extras\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
+		EndingProv("extras\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
-		else
-			EndingProv("extras\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
+		EndingProv("extras\\", "", "JACKsalyut7.ssc", CheckBox27);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
-		else
-            EndingProv("extras\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
+		EndingProv("extras\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "Salyut7", "JACKsalyut7.ssc", CheckBox27);
-		else
-			EndingProv("extras\\", "", "JACKsalyut7.ssc", CheckBox27);
+		EndingProv("extras\\", "Mariner9", "mariner 9.ssc", CheckBox28);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\venus-missions\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
-		else
-			EndingProv("extras\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
+		EndingProv("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\mars-missions\\", "Mariner9", "mariner 9.ssc", CheckBox28);
-		else
-			EndingProv("extras\\", "Mariner9", "mariner 9.ssc", CheckBox28);
+		EndingProv("extras\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\venus-missions\\", "venus_express", "venus_express.ssc", CheckBox29);
-		else
-			EndingProv("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
+		EndingProv("extras\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
 
-		//EndingProv("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); нет информации об Ending'е
-		//EndingProv("extras\\", "Corot", "Corot.ssc", CheckBox31); нет информации об Ending'е
+		EndingProv("extras\\", "ISO", "JACKiso.ssc", CheckBox36);
 
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\space-observatories\\", "herschel", "herschel.ssc", CheckBox32);
-//		else
-//			EndingProv("extras\\", "herschel", "herschel.ssc", CheckBox32);
+		EndingProv("extras\\", "envisat", "envisat.ssc", CheckBox37);
 
-		//EndingProv("extras\\", "Voyager", "voyager.ssc", CheckBox33);  нет информации об Ending'е
+		EndingProv("extras\\", "Dawn", "dawn.ssc", CheckBox40);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\kuiper-belt-missions\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
-		else
-			EndingProv("extras\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
+		EndingProv("extras\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
-		else
-			EndingProv("extras\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
+		EndingProv("extras\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\space-observatories\\", "ISO", "JACKiso.ssc", CheckBox36);
-		else
-			EndingProv("extras\\", "ISO", "JACKiso.ssc", CheckBox36);
+		EndingProv("extras\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\near-earth-missions\\", "envisat", "envisat.ssc", CheckBox37);
-		else
-			EndingProv("extras\\", "envisat", "envisat.ssc", CheckBox37);
+		EndingProv("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
 
-		//EndingProv("extras\\", "ao7", "AO7.ssc", CheckBox38);   нет информации об Ending'е
+		EndingProv("extras\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
 
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\moon-missions\\", "apollo10", "apollo10.ssc", CheckBox39);
-//		else
-//			EndingProv("extras\\", "apollo10", "apollo10.ssc", CheckBox39);
-//
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\moon-missions\\", "Apollo_11", "apollo.ssc", CheckBox39);
-//		else
-//			EndingProv("extras\\", "Apollo_11", "apollo.ssc", CheckBox39);
+		EndingProv("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\main-belt-missions\\", "Dawn", "dawn.ssc", CheckBox40);
-		else
-			EndingProv("extras\\", "Dawn", "dawn.ssc", CheckBox40);
+		EndingProv("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\cometary-missions\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
-		else
-			EndingProv("extras\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
+		EndingProv("extras\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\cometary-missions\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
-		else
-			EndingProv("extras\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
+		EndingProv("extras\\", "planck", "planck.ssc", CheckBox55);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\sun-missions\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
-		else
-			EndingProv("extras\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
+		EndingProv("extras\\", "planck", "planck_fov.ssc", CheckBox55);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\cometary-missions\\", "ice", "ice-xyz.ssc", CheckBox44);
-		else
-			EndingProv("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
+		EndingProv("extras\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
 
-		//EndingProv("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  нет информации об Ending'е
+		EndingProv("extras\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
 
-//		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//			EndingProv("data\\spacecrafts\\moon-missions\\", "lro", "lro.ssc", CheckBox46);
-//		else
-//			EndingProv("extras\\", "lro", "lro.ssc", CheckBox46);
+		EndingProv("extras\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\venus-missions\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
-		else
-			EndingProv("extras\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
+		EndingProv("extras\\", "Viking-full", "viking.ssc", CheckBox59);
 
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\mars-missions\\", "Mars Express", "mars express.ssc", CheckBox48);
-		else
-			EndingProv("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
-
-		//EndingProv("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  нет информации об Ending'е
-		//EndingProv("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  нет информации об Ending'е
-		//EndingProv("extras\\", "messenger", "messenger.ssc", CheckBox51);  нет информации об Ending'е
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\mars-missions\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
-		else
-			EndingProv("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
-
-		//EndingProv("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); нет информации об Ending'е
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\interplanetary-missions\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
-		else
-			EndingProv("extras\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\space-observatories\\", "planck", "planck.ssc", CheckBox55);
-		else
-			EndingProv("extras\\", "planck", "planck.ssc", CheckBox55);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\space-observatories\\", "planck", "planck_fov.ssc", CheckBox55);
-		else
-			EndingProv("extras\\", "planck", "planck_fov.ssc", CheckBox55);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\cometary-missions\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
-		else
-			EndingProv("extras\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\space-observatories\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
-		else
-			EndingProv("extras\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\venus-missions\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
-		else
-			EndingProv("extras\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\mars-missions\\", "Viking-full", "viking.ssc", CheckBox59);
-		else
-			EndingProv("extras\\", "Viking-full", "viking.ssc", CheckBox59);
-
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			EndingProv("data\\spacecrafts\\interplanetary-missions\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
-		else
-			EndingProv("extras\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
+		EndingProv("extras\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
 
 		//ПРОВЕРКА LUA-ИНСТРУМЕНТОВ
 		String ShowP="";
@@ -819,10 +606,10 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		String DigitDur="";
 
 		//Проверка версии Lua-инструментов
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
+		if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_universal_tools_v2\\"+"config.lua"))
 		{
-			LuaAdr="\lua-applications\\lua_universal_tools_v2\\";
-			LuaTab->Caption="Lua Universal Tools v1.5";
+			LuaAdr="\extras\\lua_universal_tools_v2\\";
+			LuaTab->Caption="Lua Universal Tools v1.5/2.0";
 			ShowP="show_lua_universal_tools_v2 = ";
 			GroupBox8->Height=281;
 			RadioGroup1->Visible=true;
@@ -838,74 +625,50 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 			Label11->Caption="             "+StringsLocale[5];
 			Label11->Visible=true;
 		}
-		else
+		if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_universal_tools\\"+"config.lua"))
 		{
-			if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_universal_tools_v2\\"+"config.lua"))
-			{
-				LuaAdr="\extras\\lua_universal_tools_v2\\";
-				LuaTab->Caption="Lua Universal Tools v1.5/2.0";
-				ShowP="show_lua_universal_tools_v2 = ";
-				GroupBox8->Height=281;
-				RadioGroup1->Visible=true;
-				CheckBox5->Enabled=false;
-				CheckBox6->Enabled=false;
-				CheckBox11->Enabled=false;
-				CheckBox12->Enabled=false;
-				CheckBox7->Enabled=false;
-				CheckBox13->Enabled=false;
-				CheckBox8->Enabled=false;
-				CheckBox15->Enabled=false;
-				CheckBox16->Enabled=false;
-				Label11->Caption="             "+StringsLocale[5];
-				Label11->Visible=true;
-			}
-			if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_universal_tools\\"+"config.lua"))
-			{
-				LuaAdr="\extras\\lua_universal_tools\\";
-				LuaTab->Caption="Lua Universal Tools v1.0";
-				ShowP="show_lua_universal_tools = ";
-				GroupBox8->Height=281;
-				RadioGroup1->Visible=true;
-			}
-			else
-			{
-				if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_edu_tools\\"+"config.lua"))
-				{
-					LuaAdr="\extras\\lua_edu_tools\\";
-					LuaTab->Caption="Lua Edu Tools v1.2 beta 8";
-					ShowP="show_lua_edu_tools = ";
-				}
-				if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_edu_tools-b9\\"+"config.lua"))
-				{
-					LuaAdr="\extras\\lua_edu_tools-b9\\";
-					LuaTab->Caption="Lua Edu Tools v1.2 beta 9";
-					ShowP="show_lua_edu_tools = ";
-				}
-			}
-			if (LuaAdr=="")
-			{
-				LuaAdr="none";
-				LuaTab->Caption=StringsLocale[6];
-				//Перечисляем все компоненты страницы для деактивации
-				CheckBox4->Enabled=false;
-				CheckBox5->Enabled=false;
-				CheckBox6->Enabled=false;
-				CheckBox7->Enabled=false;
-				CheckBox8->Enabled=false;
-				CheckBox11->Enabled=false;
-				CheckBox12->Enabled=false;
-				CheckBox13->Enabled=false;
-				CheckBox14->Enabled=false;
-				CheckBox15->Enabled=false;
-				CheckBox16->Enabled=false;
-				ComboBox2->Enabled=false;
-				Edit4->Enabled=false;
-				BitBtn3->Enabled=false;
-				Label11->Visible=true;
-				Label12->Visible=true;
-				Label14->Visible=true;
-				return;
-			}
+			LuaAdr="\extras\\lua_universal_tools\\";
+			LuaTab->Caption="Lua Universal Tools v1.0";
+			ShowP="show_lua_universal_tools = ";
+			GroupBox8->Height=281;
+			RadioGroup1->Visible=true;
+		}
+		if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_edu_tools\\"+"config.lua"))
+		{
+			LuaAdr="\extras\\lua_edu_tools\\";
+			LuaTab->Caption="Lua Edu Tools v1.2 beta 8";
+			ShowP="show_lua_edu_tools = ";
+		}
+		if(FileExists(ExtractFilePath(Application->ExeName)+"\extras\\lua_edu_tools-b9\\"+"config.lua"))
+		{
+			LuaAdr="\extras\\lua_edu_tools-b9\\";
+			LuaTab->Caption="Lua Edu Tools v1.2 beta 9";
+			ShowP="show_lua_edu_tools = ";
+		}
+
+		if (LuaAdr=="")
+		{
+			LuaAdr="none";
+			LuaTab->Caption=StringsLocale[6];
+			//Перечисляем все компоненты страницы для деактивации
+			CheckBox4->Enabled=false;
+			CheckBox5->Enabled=false;
+			CheckBox6->Enabled=false;
+			CheckBox7->Enabled=false;
+			CheckBox8->Enabled=false;
+			CheckBox11->Enabled=false;
+			CheckBox12->Enabled=false;
+			CheckBox13->Enabled=false;
+			CheckBox14->Enabled=false;
+			CheckBox15->Enabled=false;
+			CheckBox16->Enabled=false;
+			ComboBox2->Enabled=false;
+			Edit4->Enabled=false;
+			BitBtn3->Enabled=false;
+			Label11->Visible=true;
+			Label12->Visible=true;
+			Label14->Visible=true;
+			return;
 		}
 		TStringList *Lua=new TStringList;
 		Lua->LoadFromFile(ExtractFilePath(Application->ExeName)+LuaAdr+"config.lua");
@@ -1120,7 +883,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 		else
 		{
-			Application->MessageBox(MessegesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+			Application->MessageBox(MessagesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 			Edit3->Color=clRed;
 			Edit3->Font->Color=clWhite;
 			return;
@@ -1128,7 +891,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	}
 	else
 	{
-		Application->MessageBox(MessegesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+		Application->MessageBox(MessagesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 		Edit2->Color=clRed;
 		Edit2->Font->Color=clWhite;
 		return;
@@ -1161,7 +924,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 		}
 
 	if (EditDir1->Text=="")
-		Application->MessageBox(MessegesLocale[3].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+		Application->MessageBox(MessagesLocale[3].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 
 	//Курсор
 	if (RadioButton1->Checked)
@@ -1235,7 +998,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 			S[5]=StringReplace(EditStartScript->Text,"\\","/",TReplaceFlags()<< rfReplaceAll);
 		else
 		{
-			Application->MessageBox(MessegesLocale[4].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+			Application->MessageBox(MessagesLocale[4].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 			return;
 		}
 
@@ -1259,7 +1022,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 			S[6]=StringReplace(EditDemoScript->Text,"\\","/",TReplaceFlags()<< rfReplaceAll);
 		else
 		{
-			Application->MessageBox(MessegesLocale[5].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+			Application->MessageBox(MessagesLocale[5].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 			return;
 		}
 
@@ -1284,7 +1047,7 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	}
 	else
 	{
-		Application->MessageBox(MessegesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+		Application->MessageBox(MessagesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 		Edit5->Color=clRed;
 		Edit5->Font->Color=clWhite;
 		return;
@@ -1301,263 +1064,100 @@ void __fastcall TMainForm::BitBtn1Click(TObject *Sender)
 	Main->SaveToFile(ExtractFilePath(Application->ExeName)+"celestia.cfg");
 	delete Main;
 
-	//Музыкальный проигрыватель для Celestia EP v2.0
-	if(GroupBox6->Visible==true)
-	{
-		EP = new TIniFile(ExtractFilePath(Application->ExeName)+"celestia_ep.ini");
-		if(CheckBox21->Checked==true)
-			EP->WriteString("Settings","Music","true");
-		else
-			EP->WriteString("Settings","Music","false");
-
-		EP->WriteString("Settings","Player",PlayerEdit->Text);
-		delete EP;
-	}
 	if(AutoSave==false)
-		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
+		Application->MessageBox(MessagesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
 //ОБЪЕКТЫ И ВРЕМЯ
 void __fastcall TMainForm::BitBtn2Click(TObject *Sender)
 {
 	//Солнечные вспышки
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\sun\\","sun_flares",CheckBox1);
-	else
-		ObjectSave("extras\\","sun_flares",CheckBox1);
+	ObjectSave("extras\\","sun_flares",CheckBox1);
 
 	//Кольца Юпитера
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","Jupiter Rings",CheckBox2);
-	else
-		ObjectSave("extras\\","Jupiter Rings",CheckBox2);
+	ObjectSave("extras\\","Jupiter Rings",CheckBox2);
 
 	//Пояс Койпера
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\","kuiper-belt",CheckBox17);
-	else
-		ObjectSave("extras\\","Kuiper_Belt",CheckBox17);
+	ObjectSave("extras\\","Kuiper_Belt",CheckBox17);
 
 	//Динамическая атмосфера Юпитера
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","JupClouds",CheckBox18);
-	else
-		ObjectSave("extras\\","Jupiter_Clouds",CheckBox18);
+	ObjectSave("extras\\","Jupiter_Clouds",CheckBox18);
 
 	//Вулканы Ио
-	if(Label19->Caption.Pos("Celestia Extended Pack v1.0")) //недочет в самой сборке
-		ObjectSave("extras\\","iovolcanoes\\iovolcanoes",CheckBox19);
-	else
-	{
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-			ObjectSave("data\\solar-system\\planets-&-moons\\jupiter-&-moons\\","iovolcanoes",CheckBox19);
-		else
-			ObjectSave("extras\\","iovolcanoes",CheckBox19);
-	}
+	ObjectSave("extras\\","iovolcanoes",CheckBox19);
 
 	//Космический лифт
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\fiction-objects\\","space-lift",CheckBox20);
-	else
-		ObjectSave("extras\\","Space Lift",CheckBox20);
+	ObjectSave("extras\\","Space Lift",CheckBox20);
 
 	//Облако Оорта
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		ObjectSave("data\\solar-system\\","oort-cloud",CheckBox61);
-	else
-		ObjectSave("extras\\","Oort_Cloud",CheckBox61);
+	ObjectSave("extras\\","Oort_Cloud",CheckBox61);
 
-	//Подсветка частиц колец Сатурна
-	HSatRingsSave("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
+	//Подсветка частиц колец Сатурна (сделать для Celestia)
+	//HSatRingsSave("data\\solar-system\\planets-&-moons\\saturn\\saturn-rings-model\\models\\saturn-ring-element.cmod", CheckBox62);
 
 	//Космические аппараты...
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "mir", "mir.ssc", CheckBox9);
-	else
-		EndingSave("extras-standard\\", "mir", "mir.ssc", CheckBox9);
+	EndingSave("extras-standard\\", "mir", "mir.ssc", CheckBox9);
 
-//	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//		EndingSave("data\\spacecrafts\\jupiter-missions\\", "galileo", "galileo.ssc", CheckBox3);
-//	else
-//		EndingSave("extras-standard\\", "galileo", "galileo.ssc", CheckBox3);
+	EndingSave("extras\\", "Cassini-Huygens", "cassini_huygens.ssc", CheckBox23);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\saturn-missions\\", "cassini", "cassini.ssc", CheckBox23);
-	else
-		EndingSave("extras\\", "Cassini-Huygens", "cassini_huygens.ssc", CheckBox23);
+	EndingSave("extras\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
-	else
-		EndingSave("extras\\", "Sputnik 1", "sputnik-1.ssc", CheckBox24);
+	EndingSave("extras\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
-	else
-		EndingSave("extras\\", "Spoutnik 2", "Spoutnik.ssc", CheckBox25);
+	EndingSave("extras\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
-	else
-		EndingSave("extras\\", "Sputnik 3", "Spoutnik3.ssc", CheckBox26);
+	EndingSave("extras\\", "", "JACKsalyut7.ssc", CheckBox27);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "Salyut7", "JACKsalyut7.ssc", CheckBox27);
-	else
-		EndingSave("extras\\", "", "JACKsalyut7.ssc", CheckBox27);
+	EndingSave("extras\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\venus-missions\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
-	else
-		EndingSave("extras\\", "Mariner2", "JACKmariner2-xyz.ssc", CheckBox28);
+	EndingSave("extras\\", "Mariner9", "mariner 9.ssc", CheckBox28);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\mars-missions\\", "Mariner9", "mariner 9.ssc", CheckBox28);
-	else
-		EndingSave("extras\\", "Mariner9", "mariner 9.ssc", CheckBox28);
+	EndingSave("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\venus-missions\\", "venus_express", "venus_express.ssc", CheckBox29);
-	else
-		EndingSave("extras\\", "venus_express", "venus_express.ssc", CheckBox29);
+	EndingSave("extras\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
 
-	//EndingSave("extras\\", "Chandra X-Ray Observatory", "chandra.ssc", CheckBox30); нет информации об Ending'е
-	//EndingSave("extras\\", "Corot", "Corot.ssc", CheckBox31); нет информации об Ending'е
+	EndingSave("extras\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
 
-//	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//		EndingSave("data\\spacecrafts\\space-observatories\\", "herschel", "herschel.ssc", CheckBox32);
-//	else
-//		EndingSave("extras\\", "herschel", "herschel.ssc", CheckBox32);
+	EndingSave("extras\\", "ISO", "JACKiso.ssc", CheckBox36);
 
-	//EndingSave("extras\\", "Voyager", "voyager.ssc", CheckBox33);  нет информации об Ending'е
+	EndingSave("extras\\", "envisat", "envisat.ssc", CheckBox37);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\kuiper-belt-missions\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
-	else
-		EndingSave("extras\\", "new_horizons_jpg_v2_small", "new_horizons.ssc", CheckBox34);
+	EndingSave("extras\\", "Dawn", "dawn.ssc", CheckBox40);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
-	else
-		EndingSave("extras\\", "Spitzer", "JACKspitzer-xyz.ssc", CheckBox35);
+	EndingSave("extras\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\space-observatories\\", "ISO", "JACKiso.ssc", CheckBox36);
-	else
-		EndingSave("extras\\", "ISO", "JACKiso.ssc", CheckBox36);
+	EndingSave("extras\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\near-earth-missions\\", "envisat", "envisat.ssc", CheckBox37);
-	else
-		EndingSave("extras\\", "envisat", "envisat.ssc", CheckBox37);
+	EndingSave("extras\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
 
-	//EndingSave("extras\\", "ao7", "AO7.ssc", CheckBox38);   нет информации об Ending'е
+	EndingSave("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
 
-//	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//		EndingSave("data\\spacecrafts\\moon-missions\\", "apollo10", "apollo10.ssc", CheckBox39);
-//	else
-//		EndingSave("extras\\", "apollo10", "apollo10.ssc", CheckBox39);
-//
-//	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-//		EndingSave("data\\spacecrafts\\moon-missions\\", "Apollo_11", "apollo.ssc", CheckBox39);
-//	else
-//		EndingSave("extras\\", "Apollo_11", "apollo.ssc", CheckBox39);
+	EndingSave("extras\\", "lro", "lro.ssc", CheckBox46);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\main-belt-missions\\", "Dawn", "dawn.ssc", CheckBox40);
-	else
-		EndingSave("extras\\", "Dawn", "dawn.ssc", CheckBox40);
+	EndingSave("extras\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\cometary-missions\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
-	else
-		EndingSave("extras\\", "DeepImpact", "DeepImpact.ssc", CheckBox41);
+	EndingSave("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\cometary-missions\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
-	else
-		EndingSave("extras\\", "Giotto", "JACKgiottoflyby-xyz-ssc.ssc", CheckBox42);
+	EndingSave("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\sun-missions\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
-	else
-		EndingSave("extras\\", "Helios", "JACKheliosSolarProbe-xyz.ssc", CheckBox43);
+	EndingSave("extras\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\cometary-missions\\", "ice", "ice-xyz.ssc", CheckBox44);
-	else
-		EndingSave("extras\\", "ice", "ice-xyz.ssc", CheckBox44);
+	EndingSave("extras\\", "planck", "planck.ssc", CheckBox55);
 
-	//EndingSave("extras\\", "lunarlanders", "lunarlandingsites.ssc", CheckBox45);  нет информации об Ending'е
+	EndingSave("extras\\", "planck", "planck_fov.ssc", CheckBox55);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\moon-missions\\", "lro", "lro.ssc", CheckBox46);
-	else
-		EndingSave("extras\\", "lro", "lro.ssc", CheckBox46);
+	EndingSave("extras\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\venus-missions\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
-	else
-		EndingSave("extras\\", "Magellan-full", "JACKmagellan_venus.ssc", CheckBox47);
+	EndingSave("extras\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\mars-missions\\", "Mars Express", "mars express.ssc", CheckBox48);
-	else
-		EndingSave("extras\\", "Mars Express", "mars express.ssc", CheckBox48);
+	EndingSave("extras\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
 
-	//EndingSave("extras\\", "EC_MGSf", "MGS.ssc", CheckBox49);  нет информации об Ending'е
-	//EndingSave("extras\\", "Mars Reconaissance Orbiter", "MRO.ssc", CheckBox50);  нет информации об Ending'е
-	//EndingSave("extras\\", "messenger", "messenger.ssc", CheckBox51);  нет информации об Ending'е
+	EndingSave("extras\\", "Viking-full", "viking.ssc", CheckBox59);
 
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\mars-missions\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
-	else
-		EndingSave("extras\\", "Nozomi", "JACKplanet-bfull-xyz.ssc", CheckBox52);
-
-	//EndingSave("extras\\", "phoenix_lander", "phoenix_lander.ssc", CheckBox53); нет информации об Ending'е
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\interplanetary-missions\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
-	else
-		EndingSave("extras\\", "Pioneers", "JACKearly_pioneers-xyz.ssc", CheckBox54);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\space-observatories\\", "planck", "planck.ssc", CheckBox55);
-	else
-		EndingSave("extras\\", "planck", "planck.ssc", CheckBox55);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\space-observatories\\", "planck", "planck_fov.ssc", CheckBox55);
-	else
-		EndingSave("extras\\", "planck", "planck_fov.ssc", CheckBox55);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\cometary-missions\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
-	else
-		EndingSave("extras\\", "rosetta_brianj", "rosetta.ssc", CheckBox56);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\space-observatories\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
-	else
-		EndingSave("extras\\", "Ulysses-full", "JACKulysses-xyz.ssc", CheckBox57);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\venus-missions\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
-	else
-		EndingSave("extras\\", "Venera", "JACKveneraUSSR-xyz.ssc", CheckBox58);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\mars-missions\\", "Viking-full", "viking.ssc", CheckBox59);
-	else
-		EndingSave("extras\\", "Viking-full", "viking.ssc", CheckBox59);
-
-	if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		EndingSave("data\\spacecrafts\\interplanetary-missions\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
-	else
-		EndingSave("extras\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
+	EndingSave("extras\\", "Zond 3", "JACKzondUSSR-xyz.ssc", CheckBox60);
 
 	if(AutoSave==false)
-		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
+		Application->MessageBox(MessagesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
 //LUA-ИНСТРУМЕНТЫ
@@ -1826,7 +1426,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 	}
 	else
 	{
-		Application->MessageBox(MessegesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
+		Application->MessageBox(MessagesLocale[2].c_str(), Application->Title.c_str(), MB_OK | MB_ICONERROR);
 		Edit4->Color=clRed;
 		Edit4->Font->Color=clWhite;
 		return;
@@ -1866,7 +1466,7 @@ void __fastcall TMainForm::BitBtn3Click(TObject *Sender)
 	Lua->SaveToFile(ExtractFilePath(Application->ExeName)+LuaAdr+"config.lua");
     delete Lua;
 	if(AutoSave==false)
-		Application->MessageBox(MessegesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
+		Application->MessageBox(MessagesLocale[6].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
 //О ПРОГРАММЕ
@@ -1925,24 +1525,15 @@ void __fastcall TMainForm::Edit3Click(TObject *Sender)
 
 void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 {
-	if (Application->MessageBox(MessegesLocale[7].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
+	if (Application->MessageBox(MessagesLocale[7].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
 	{
 		//Для того, чтобы при выполнении кнопок "Сохранить" не выскакивало сообщение
 		AutoSave=true;
 
 		//Основные
-		if(Label19->Caption.Pos("Celestia Extended Pack v3.0"))
-		{
-			EditDir1->Text="data";
-			EditDir2->Text="lua-applications";
-			EditDir3->Text="extras";
-		}
-		else
-		{
-			EditDir1->Text="extras-standard";
-			EditDir2->Text="extras";
-			EditDir3->Text="";
-		}
+		EditDir1->Text="extras-standard";
+		EditDir2->Text="extras";
+		EditDir3->Text="";
 		Edit2->Text="100";
 		Edit3->Text="100";
 		RadioButton1->Checked=true;
@@ -1965,6 +1556,7 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 		CheckBox20->State=0;
 		CheckBox61->State=0;
 		CheckBox62->State=0;
+
 		//Космические аппараты
 		CheckBox9->State=0;
 		CheckBox3->State=0;
@@ -2022,7 +1614,7 @@ void __fastcall TMainForm::BitBtn4Click(TObject *Sender)
 			BitBtn3->Click();
 		}
 		AutoSave=false;
-		Application->MessageBox(MessegesLocale[8].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
+		Application->MessageBox(MessagesLocale[8].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 	}
 }
 //---------------------------------------------------------------------------
@@ -2242,15 +1834,6 @@ void __fastcall TMainForm::CheckBox16Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Button2Click(TObject *Sender)
-{
-	if(PlayerDialog->Execute())
-	{
-    	PlayerEdit->Text=PlayerDialog->FileName;
-	}
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMainForm::CheckBox22Click(TObject *Sender)
 {
 	if (CheckBox22->Checked==true)
@@ -2373,7 +1956,7 @@ void TMainForm::CheckAll(bool checked)
 	CheckBox35->Checked=checked;
 	CheckBox36->Checked=checked;
 	CheckBox37->Checked=checked;
-	//CheckBox38->Checked=checked;м
+	//CheckBox38->Checked=checked;
 	//CheckBox39->Checked=checked;
 	CheckBox40->Checked=checked;
 	CheckBox41->Checked=checked;
@@ -2397,7 +1980,6 @@ void TMainForm::CheckAll(bool checked)
 	CheckBox59->Checked=checked;
 	CheckBox60->Checked=checked;
 }
-
 
 void __fastcall TMainForm::Button3Click(TObject *Sender)
 {
@@ -2496,7 +2078,7 @@ void __fastcall TMainForm::Button3Click(TObject *Sender)
 			BitBtn3->Click();
 		}
 		AutoSave=false;
-		Application->MessageBox(MessegesLocale[9].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
+		Application->MessageBox(MessagesLocale[9].c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 	}
 }
 //---------------------------------------------------------------------------
@@ -2610,7 +2192,7 @@ void __fastcall TMainForm::Button4Click(TObject *Sender)
 			if(LuaTab->Caption.Pos("Lua Universal Tools"))
 				Settings->WriteInteger("LuaTools","ColorScheme",RadioGroup1->ItemIndex);
 		}
-		Temp=MessegesLocale[10]+" "+ExportDialog->FileName;
+		Temp=MessagesLocale[10]+" "+ExportDialog->FileName;
 		Application->MessageBox(Temp.c_str(), Application->Title.c_str(), MB_OK | MB_ICONINFORMATION);
 	}
 }
@@ -2732,20 +2314,4 @@ void TMainForm::HSatRingsSave(String Path, TCheckBox *Check)
 		delete List;
 	}
 }
-
-void __fastcall TMainForm::HlpClick(TObject *Sender)
-{
-	String HelpFile = ExtractFilePath(Application->ExeName)+"manager\\help\\"+Language+".chm";
-	if(FileExists(HelpFile))
-		ShellExecute(Handle, NULL, HelpFile.c_str(), NULL, NULL, SW_SHOWNORMAL);
-	else
-	{
-		if(Application->MessageBox(StringsLocale[11].c_str(), Application->Title.c_str(), MB_YESNO | MB_ICONQUESTION)==IDYES)
-		{
-			HelpFile = ExtractFilePath(Application->ExeName)+"manager\\help\\English.chm";
-			ShellExecute(Handle, NULL, HelpFile.c_str(), NULL, NULL, SW_SHOWNORMAL);
-		}
-	}
-}
-//---------------------------------------------------------------------------
 

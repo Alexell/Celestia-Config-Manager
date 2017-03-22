@@ -24,10 +24,6 @@ Label24=Rotationsgeschwindigkeit der Ansicht, wenn Pfeiltaste <- oder -> gedrüc
 Label26=Hinweis: Dieser Parameter beeinflusst die Rotation der Ansicht im 'Planetarium-Modus' in der Nähe von Planetenoberflächen.
 Label25=Empfindlichkeit der Rotation mittels Maus:
 Label27=Hinweis: Der Wert 0.0 schaltet diese Funktion aus.
-GroupBox6=Incidental music Celestia EP v2.0
-CheckBox21=Enabled
-PlayerEdit=Path to your media player (required):
-Help=Help
 
 [ObjectsTime]
 ObjectTab=Objekte und Zeit
@@ -123,17 +119,14 @@ BitBtn4=Wiederherstellung durchführen
 
 [About]
 AboutTab=Über
-Label7=Dieser Konfigurationsmanager wurde entwickelt für Celestia 1.6.1, Celestia Educational und Celestia Extended Pack. Er wurde erstellt, um die Konfiguration von Celestia zu vereinfachen und Add-Ons zu verwalten. Er unterstützt die meisten Raumfahrzeuge und die folgenden Lua-Tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9, Lua Universal Tools v1.0 und Lua Universal Tools v2.0.
-Label3=Dank an: Sergey Leonov a.k.a Leserg für das Testen der ersten Version und hilfeiche Tipps; Artyom Volgin a.k.a Zemlyanin für Ideen zur Funktionalität und das Testen sämtlicher Versionen; Ulrich Dickmann a.k.a Adirondack für die deutsche Übersetzung.
-LabelCelestia=Celestia in Russland
+Label7=Dieser Konfigurationsmanager wurde entwickelt für Celestia 1.6.1 und Celestia Educational. Er wurde erstellt, um die Konfiguration von Celestia zu vereinfachen und Add-Ons zu verwalten. Er unterstützt die meisten Raumfahrzeuge und die folgenden Lua-Tools: Lua Edu Tools v1.2 beta 8, Lua Edu Tools v1.2 beta 9 und Lua Universal Tools.
+Label3=Dank an: Sergey Leonov (Leserg) für das Testen der ersten Version und hilfeiche Tipps; Artyom Volgin (Zemlyanin) für Ideen zur Funktionalität und das Testen sämtlicher Versionen; Ulrich Dickmann a.k.a Adirondack für die deutsche Übersetzung.
 Label4=Diskussionsforum
-Label10= celestiaproject.net/forum
-GroupBox12=Empfohlene Downloads
+Label10=celestiaproject.net/forum
 
 [Strings]
 AppName=Celestia Config Manager
 EIDialogFilter=Konfigurations-Dateien
-PlayerDialogFilter=Ausführbare Dateien
 SaveButton=Speichern
 Download=Download
 ComboBox1Item1=Fragen

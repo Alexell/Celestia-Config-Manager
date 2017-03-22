@@ -111,10 +111,6 @@ __published:	// IDE-managed Components
         TRadioGroup *RadioGroup1;
         TCheckBox *CheckBox18;
         TCheckBox *CheckBox19;
-	TGroupBox *GroupBox6;
-	TCheckBox *CheckBox21;
-	TLabeledEdit *PlayerEdit;
-	TButton *Button2;
 	TGroupBox *GroupBox9;
 	TGroupBox *GroupBox10;
 	TGroupBox *GroupBox11;
@@ -124,7 +120,6 @@ __published:	// IDE-managed Components
 	TButton *Button3;
 	TButton *Button4;
 	TLabel *Label18;
-	TOpenDialog *PlayerDialog;
 	TTabSheet *Page1;
 	TTabSheet *Page2;
 	TCheckBox *CheckBox9;
@@ -184,8 +179,6 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox62;
 	TGroupBox *GroupBox13;
 	TCheckBox *CheckBox63;
-	TPopupMenu *PopMenu;
-	TMenuItem *Hlp;
         void __fastcall LabelLink2Click(TObject *Sender);
         void __fastcall LabelLink2MouseLeave(TObject *Sender);
         void __fastcall BitBtn1Click(TObject *Sender);
@@ -224,7 +217,6 @@ __published:	// IDE-managed Components
         void __fastcall Edit4Click(TObject *Sender);
         void __fastcall Edit4KeyPress(TObject *Sender, char &Key);
         void __fastcall CheckBox16Click(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall CheckBox22Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Label32MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
@@ -246,7 +238,6 @@ __published:	// IDE-managed Components
 	void __fastcall Label33MouseLeave(TObject *Sender);
 	void __fastcall Label33MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Label33Click(TObject *Sender);
-	void __fastcall HlpClick(TObject *Sender);
 
 
 
