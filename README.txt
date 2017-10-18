@@ -30,8 +30,8 @@ Acknowledgments
 
 Related sites
 -------------
-Forum topic: https://celestiaproject.net/forum/viewtopic.php?f=25&t=17640
-Source Code: https://github.com/Alexell/Celestia_Config_Manager
+Forum topic: https://celestia.space/forum/viewtopic.php?f=25&t=17640
+Source Code: https://github.com/Alexell/Celestia-Config-Manager
 ===================================================================
 
 
